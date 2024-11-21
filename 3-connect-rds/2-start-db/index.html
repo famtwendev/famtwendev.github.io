@@ -12,21 +12,21 @@
     <title>Create RDS Instance :: Deploy ShareNote Application on Auto Scaling Group</title>
 
     
-    <link href="/css/nucleus.css?1732192736" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1732192736" rel="stylesheet">
-    <link href="/css/hybrid.css?1732192736" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1732192736" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1732192736" rel="stylesheet">
-    <link href="/css/auto-complete.css?1732192736" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1732192736" rel="stylesheet">
-    <link href="/css/theme.css?1732192736" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1732192736" rel="stylesheet">
+    <link href="/css/nucleus.css?1732206975" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1732206975" rel="stylesheet">
+    <link href="/css/hybrid.css?1732206975" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1732206975" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1732206975" rel="stylesheet">
+    <link href="/css/auto-complete.css?1732206975" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1732206975" rel="stylesheet">
+    <link href="/css/theme.css?1732206975" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1732206975" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1732192736" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1732206975" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1732192736"></script>
+    <script src="/js/jquery-3.3.1.min.js?1732206975"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1732192736"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1732192736"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1732206975"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1732206975"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1732192736"></script>
+<script type="text/javascript" src="/js/search.js?1732206975"></script>
 
     
   </div>
@@ -445,7 +445,7 @@
         
         ">
       <a href="/4-configure-apigateway/1-create-method-api/">
-          <b>3.1 </b>Create method API
+          <b>4.1 </b>Create method API
           
             <i class="fas fa-check read-icon"></i>
           
@@ -473,7 +473,7 @@
         
         ">
       <a href="/4-configure-apigateway/2-check-api-with-postman/">
-          <b>3.2 </b>Check API with Postman
+          <b>4.2 </b>Check API with Postman
           
             <i class="fas fa-check read-icon"></i>
           
@@ -828,7 +828,74 @@
 
 
 
-	<h4 id="tạo-cơ-sở-dữ-liệu">Tạo cơ sở dữ liệu</h4>
+	<h4 id="launch-rds-instance">Launch RDS Instance</h4>
+<p>Create RDS Instance</p>
+<ul>
+<li>
+<p>Select section: <strong>Databases</strong></p>
+</li>
+<li>
+<p>Select: <strong>Create Database</strong>
+<img alt="Choose DB" src="/images/3/3_2/1.png?width=90pc"></p>
+</li>
+<li>
+<p>Select method: <strong>Standard create</strong></p>
+</li>
+<li>
+<p>Select storage type: <strong>MySQL</strong>
+<img alt="Template" src="/images/3/3_2/2.png?width=90pc"></p>
+</li>
+<li>
+<p>Select template: <strong>Dev/Test</strong></p>
+</li>
+<li>
+<p>Select <strong>Multi-AZ DB instance</strong>
+We can adjust this part to suit your requirements to optimize your costs, but there will also be some limitations so you need to study carefully.
+<img alt="Subnet DB" src="/images/3/3_2/3.png?width=90pc"></p>
+</li>
+<li>
+<p>Enter DB instance name: <code>fcj-database-instance</code></p>
+</li>
+<li>
+<p>Enter username: <code>admin</code></p>
+</li>
+<li>
+<p>Enter password: <code>admin2024</code>
+<img alt="Info DB" src="/images/3/3_2/4.png?width=90pc"></p>
+</li>
+</ul>
+<p>In the settings section:
+<img alt="Class &amp; Storage" src="/images/3/3_2/5.png?width=90pc"></p>
+<ul>
+<li>
+<p>Connect to the created VPC: <strong>FCJ-Lab-vpc</strong></p>
+</li>
+<li>
+<p>Select the Subnet created from the previous section: <strong>fcj-lab-subnet-group-db</strong></p>
+</li>
+<li>
+<p>Public access: <strong>Yes</strong>
+<img alt="Resource" src="/images/3/3_2/6.png?width=90pc"></p>
+</li>
+<li>
+<p>Select the Security group created for the DB: <strong>FCJ-Lab-sg-db</strong></p>
+</li>
+<li>
+<p>The following part can be left as default or configured as desired
+<img alt="Resource" src="/images/3/3_2/7.png?width=90pc"></p>
+</li>
+<li>
+<p>Check the configurations carefully to avoid confusion affecting the implementation cost</p>
+</li>
+<li>
+<p>Select <strong>Create</strong>
+<img alt="Resource" src="/images/3/3_2/8.png?width=90pc"></p>
+</li>
+<li>
+<p>Complete creating DB instance and this process must wait about 15 minutes to show Available
+<img alt="Resource" src="/images/3/3_2/9.png?width=90pc"></p>
+</li>
+</ul>
 
 
 
@@ -1209,19 +1276,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1732192736"></script>
-    <script src="/js/perfect-scrollbar.min.js?1732192736"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1732192736"></script>
-    <script src="/js/jquery.sticky.js?1732192736"></script>
-    <script src="/js/featherlight.min.js?1732192736"></script>
-    <script src="/js/highlight.pack.js?1732192736"></script>
+    <script src="/js/clipboard.min.js?1732206975"></script>
+    <script src="/js/perfect-scrollbar.min.js?1732206975"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1732206975"></script>
+    <script src="/js/jquery.sticky.js?1732206975"></script>
+    <script src="/js/featherlight.min.js?1732206975"></script>
+    <script src="/js/highlight.pack.js?1732206975"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1732192736"></script>
-    <script src="/js/learn.js?1732192736"></script>
-    <script src="/js/hugo-learn.js?1732192736"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1732206975"></script>
+    <script src="/js/learn.js?1732206975"></script>
+    <script src="/js/hugo-learn.js?1732206975"></script>
 
-    <link href="/mermaid/mermaid.css?1732192736" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1732192736"></script>
+    <link href="/mermaid/mermaid.css?1732206975" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1732206975"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

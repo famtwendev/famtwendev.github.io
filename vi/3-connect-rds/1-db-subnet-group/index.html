@@ -12,21 +12,21 @@
     <title>Tạo DB Subnet Group :: Triển khai Ứng dụng ShareNote với Auto Scaling Group</title>
 
     
-    <link href="/css/nucleus.css?1732192736" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1732192736" rel="stylesheet">
-    <link href="/css/hybrid.css?1732192736" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1732192736" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1732192736" rel="stylesheet">
-    <link href="/css/auto-complete.css?1732192736" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1732192736" rel="stylesheet">
-    <link href="/css/theme.css?1732192736" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1732192736" rel="stylesheet">
+    <link href="/css/nucleus.css?1732206976" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1732206976" rel="stylesheet">
+    <link href="/css/hybrid.css?1732206976" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1732206976" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1732206976" rel="stylesheet">
+    <link href="/css/auto-complete.css?1732206976" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1732206976" rel="stylesheet">
+    <link href="/css/theme.css?1732206976" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1732206976" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1732192736" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1732206976" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1732192736"></script>
+    <script src="/js/jquery-3.3.1.min.js?1732206976"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1732192736"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1732192736"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1732206976"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1732206976"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1732192736"></script>
+<script type="text/javascript" src="/js/search.js?1732206976"></script>
 
     
   </div>
@@ -445,7 +445,7 @@
         
         ">
       <a href="/vi/4-configure-apigateway/1-create-method-api/">
-          <b>3.1 </b>Tạo phương thức API
+          <b>4.1 </b>Tạo phương thức API
           
             <i class="fas fa-check read-icon"></i>
           
@@ -473,7 +473,7 @@
         
         ">
       <a href="/vi/4-configure-apigateway/2-check-api-with-postman/">
-          <b>3.2 </b>Kiểm tra API với Postman
+          <b>4.2 </b>Kiểm tra API với Postman
           
             <i class="fas fa-check read-icon"></i>
           
@@ -829,6 +829,45 @@
 
 
 	<h4 id="tạo-db-subnet-group">Tạo DB Subnet Group</h4>
+<p>Ở giao diện AWS console thực hiện</p>
+<ol>
+<li>Tìm kiếm từ khóa: <strong>RDS</strong></li>
+</ol>
+<ul>
+<li>
+<p>Chọn phần: <strong>Subnet groups</strong></p>
+</li>
+<li>
+<p>Chọn: <strong>Create DB subnet group</strong>
+<img alt="Subnet DB" src="/images/3/3_1/1.png?width=90pc"></p>
+</li>
+<li>
+<p>Nhập tên: <code>fcj-lab-subnet-group-db</code></p>
+</li>
+<li>
+<p>Nhập mô tả: <code>Subnet Group for FCJ Management</code></p>
+</li>
+<li>
+<p>Chọn VPC đã được tạo từ trước là <strong>FCJ-Lab-vpc</strong>
+<img alt="Info Subnet DB" src="/images/3/3_1/2.png?width=90pc"></p>
+</li>
+</ul>
+<ol start="2">
+<li>Chọn Availability Zones đã được tạo chung với VPC từ trước đó</li>
+</ol>
+<ul>
+<li>
+<p>Chọn <strong>2 Subnet private</strong></p>
+</li>
+<li>
+<p>Kiểm tra lại và chọn <strong>Create</strong>
+<img alt="Create Subnet DB" src="/images/3/3_1/3.png?width=90pc"></p>
+</li>
+<li>
+<p>Hoành thành tạo một Subnet groups
+<img alt="Create Success" src="/images/3/3_1/4.png?width=90pc"></p>
+</li>
+</ul>
 
 
 
@@ -1206,19 +1245,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1732192736"></script>
-    <script src="/js/perfect-scrollbar.min.js?1732192736"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1732192736"></script>
-    <script src="/js/jquery.sticky.js?1732192736"></script>
-    <script src="/js/featherlight.min.js?1732192736"></script>
-    <script src="/js/highlight.pack.js?1732192736"></script>
+    <script src="/js/clipboard.min.js?1732206976"></script>
+    <script src="/js/perfect-scrollbar.min.js?1732206976"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1732206976"></script>
+    <script src="/js/jquery.sticky.js?1732206976"></script>
+    <script src="/js/featherlight.min.js?1732206976"></script>
+    <script src="/js/highlight.pack.js?1732206976"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1732192736"></script>
-    <script src="/js/learn.js?1732192736"></script>
-    <script src="/js/hugo-learn.js?1732192736"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1732206976"></script>
+    <script src="/js/learn.js?1732206976"></script>
+    <script src="/js/hugo-learn.js?1732206976"></script>
 
-    <link href="/mermaid/mermaid.css?1732192736" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1732192736"></script>
+    <link href="/mermaid/mermaid.css?1732206976" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1732206976"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
