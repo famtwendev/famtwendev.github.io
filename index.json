@@ -28,15 +28,15 @@
 	"content": "DEPLOY SECURE APIS ON AWS ​​WITH API GATEWAY, LAMBDA, COGNITO, AND RDS Overview In this workshop, we will practice combining multiple AWS services to build a complete system, from user management, data processing to providing APIs for applications. Specifically, you will be able to do and understand the following:\nDeployment model Content: Introduce Preparation RDS Instance Connect API Gateway Configuration Configuring Cognito with API Gateway Test Clean up resources "
 },
 {
-	"uri": "//localhost:1313/4-configure-apigateway/1-create-method-api/",
-	"title": "Create method API",
+	"uri": "//localhost:1313/3-connect-rds/1-db-subnet-group/",
+	"title": "Create DB Subnet Group",
 	"tags": [],
 	"description": "",
 	"content": "Tạo DB Subnet Group Tìm kiếm từ khóa: RDS Chọn phần: Subnet groups Chọn: Create DB subnet group "
 },
 {
-	"uri": "//localhost:1313/3-connect-rds/1-db-subnet-group/",
-	"title": "Tạo DB Subnet Group",
+	"uri": "//localhost:1313/4-configure-apigateway/1-create-method-api/",
+	"title": "Create method API",
 	"tags": [],
 	"description": "",
 	"content": "Tạo DB Subnet Group Tìm kiếm từ khóa: RDS Chọn phần: Subnet groups Chọn: Create DB subnet group "
@@ -109,7 +109,7 @@
 	"title": "Create lambda function",
 	"tags": [],
 	"description": "",
-	"content": "Tạo cơ sở dữ liệu Lambda Function\rChangeDataRDS.zip\r(534 KB)\rDownload Lambda Function\n"
+	"content": "Tạo cơ sở dữ liệu Lambda Function\rChangeDataRDS.zip\r(534 KB)\rDownload Lambda Function Download Lambda Function\n"
 },
 {
 	"uri": "//localhost:1313/5-configure-cognito/",
