@@ -1,0 +1,127 @@
+[
+{
+	"uri": "//localhost:1313/1-introduction/",
+	"title": "Introduction",
+	"tags": [],
+	"description": "",
+	"content": "Introduction You will learn how to integrate services such as Amazon RDS, AWS Lambda, Amazon Cognito, Amazon API Gateway to build a web system or serverless application (no need to manage servers).\nAmazon RDS: You will understand how to create and manage relational databases (MySQL, PostgreSQL, etc.) on AWS to store data.\nAWS Lambda: You will learn how to create Lambda functions to handle application logic without having to manage servers. Lambda can connect to RDS and S3 to manipulate data.\nAmazon Cognito: You will learn how to use Amazon Cognito to authenticate and manage users, secure your APIs, and authenticate requests from users.\nAPI Gateway: You will learn how to configure an API Gateway to provide HTTP endpoints that allow users or applications to communicate with Lambda, and secure the API using Cognito for authentication.\nServices covered in the workshop include: Amazon Relational Database Service (Amazon RDS)\nAmazon Relational Database Service is a managed service that allows you to deploy and manage relational databases on AWS.\nAmazon RDS is an online transaction processing (OLTP) database.\nThe primary use case is transactional databases (rather than analytical databases).\nIt is best suited for structured and relational data storage requirements.\nIt is intended to be an easy alternative to traditional on-premises instances of the same database.\nAutomatic backups and patching are performed during customer-defined maintenance windows.\nScaling, replication, and availability are a click away.\nAWS Lambda\nWhat it does: Lets you run code without managing servers. Lambda automatically scales to handle thousands of requests per second.\nWhat it is: Run serverless functions, such as processing API requests, interacting with RDS databases, without maintaining a server.\nAmazon API Gateway\nWhat it does: Provides an API to connect applications to back-end services like Lambda.\nWhat it does: Create and manage RESTful or WebSocket APIs that allow users or applications to call Lambda functions over HTTP/HTTPS. API Gateway provides security, monitoring, and access control.\nAmazon Cognito\nWhat it does: Provides user authentication, login management, and access rights for mobile and web applications.\nWhat it does: Manage users and authenticate users in applications, protect APIs by integrating authentication with API Gateway, ensuring only logged-in users can access resources.\nAWS Service Deployment and Configuration Steps: You will practice creating AWS services and connecting them together, thereby creating a complete system. You will understand the deployment process, from creating AWS services to integrating them into a seamless operating system.\nCreate VPC and security group Create and configure Amazon RDS for database. Create EC2 to connect and add data to RDS instance Build Lambda functions and connect to RDS. Create an API Gateway and integrate with Lambda to handle requests from users. Create a user pool and authenticate with Amazon Cognito. Configure API Gateway security via Cognito, ensuring only authenticated users can call the API. "
+},
+{
+	"uri": "//localhost:1313/2-prepareration/1-configure-vpc/",
+	"title": "VPC Configuration",
+	"tags": [],
+	"description": "",
+	"content": "VPC Configuration In the AWS console interface, perform Search and select VPC In the VPC management interface Select Your VPC Select Create VPC The configuration table for VPC appears Select VPC and more Name FCJ-Lab Select Availability Zones (AZs): 2\nSelect public subnets: 2\nSelect private subnets: 2\nIn the VPC endpoint section\nSelect None\nSelect Create VPC\nAfter creating the VPC, we proceed to check the information of the newly created VPC. Select FCJ-Lab-vpc just created to see the overview Configure Public Subnet In the VPC management interface, in the left selection, scroll down\nSelect Subnets Search for FCJ-Lab We will see that there are 2 public subnets: FCJ-Lab-subnet-public1-ap-southeast-1a, FCJ-Lab-subnet-public2-ap-southeast-1b\nFirst we will set up FCJ-Lab-subnet-public1-ap-southeast-1b\nSelect FCJ-Lab-subnet-public1-ap-southeast-1a Select Action Select Edit subnet settings The configuration table for the public subnet appears\nClick to select Enable auto-assign public IPv4 address Select Save Similarly, we will set for FCJ-Lab-subnet-public2-ap-southeast-1b Thus, we have just configured VPC and enabled public IPv4 for the public subnet.\n"
+},
+{
+	"uri": "//localhost:1313/",
+	"title": "DEPLOY SECURE APIS ON AWS ​​WITH API GATEWAY, LAMBDA, COGNITO, AND RDS",
+	"tags": [],
+	"description": "",
+	"content": "DEPLOY SECURE APIS ON AWS ​​WITH API GATEWAY, LAMBDA, COGNITO, AND RDS Overview In this workshop, we will practice combining multiple AWS services to build a complete system, from user management, data processing to providing APIs for applications. Specifically, you will be able to do and understand the following:\nDeployment model Content: Introduce Preparation RDS Instance Connect API Gateway Configuration Configuring Cognito with API Gateway Test Clean up resources "
+},
+{
+	"uri": "//localhost:1313/3-connect-rds/1-db-subnet-group/",
+	"title": "Tạo DB Subnet Group",
+	"tags": [],
+	"description": "",
+	"content": "Tạo DB Subnet Group Tìm kiếm từ khóa: RDS Chọn phần: Subnet groups Chọn: Create DB subnet group "
+},
+{
+	"uri": "//localhost:1313/2-prepareration/2-create-security-group/",
+	"title": "Create Security Group",
+	"tags": [],
+	"description": "",
+	"content": "Configure Security Group Configure Security Group for EC2 instance\nIn the VPC management interface, select the left option. Select Security Groups Select Create security group Configuration for Security Group\nIn the Basic details section\nName the security group: FCJ-Lab-sg-public\nDescription: Security group for FCJ Lab\nVPC: FCJ-Lab-vpc\nIn the Inbound rules section We will add the following rules:\nType SSH source Anywhere-IPv4 Type HTTP source Anywhere-IPv4 Type HTTPS source Anywhere-IPv4 Type Custom TCP, port range 3000, source Anywhere-IPv4 In the Outbound section, we will leave it as default\nClick Create security group\nConfigure Security Group for database instance\nSimilar to the step of creating a security group above. Configure Security Group DB In the Basic details section Security group name FCJ-Lab-sg-db Description Security group for RDS database instance VPC FCJ-Lab-vpc In the Inbound section Select Type MYSQL/Aurora Source select FCJ-Lab-sg In the Outbound section. We leave it as default Select Create security group "
+},
+{
+	"uri": "//localhost:1313/3-connect-rds/2-start-db/",
+	"title": "Khởi chạy RDS Instance",
+	"tags": [],
+	"description": "",
+	"content": "Tạo cơ sở dữ liệu "
+},
+{
+	"uri": "//localhost:1313/2-prepareration/",
+	"title": "Preparation",
+	"tags": [],
+	"description": "",
+	"content": "Preparation In this section we will configure VPC, Security Group for RDS database instance, create role for Lamda\nVPC Configuration Create Security Group Create Role for Lambda "
+},
+{
+	"uri": "//localhost:1313/2-prepareration/3-create-role/",
+	"title": "Configuring Role for Lambda",
+	"tags": [],
+	"description": "",
+	"content": "Create Role for Lambda In the Console interface:\nSearch for keyword: IAM Select Create Role Fill in information:\nSelect usage type: AWS service Service: Lambda Select Next Search for the corresponding keyword and select the following permissions: Select AmazonRDSFullAccess Select AmazonEC2FullAccess Select AWSLambdaVPCAccessExecutionRole Select AmazonVPCFullAccess Enter the role name: RoleLambdatochangedataRDS Double check and select Create role "
+},
+{
+	"uri": "//localhost:1313/3-connect-rds/3-launch-ec2/",
+	"title": "Khởi chạy RDS Instance",
+	"tags": [],
+	"description": "",
+	"content": "Tạo cơ sở dữ liệu "
+},
+{
+	"uri": "//localhost:1313/3-connect-rds/",
+	"title": "Khởi chạy RDS Instance",
+	"tags": [],
+	"description": "",
+	"content": "Tổng quan RDS Amazon RDS là cơ sở dữ liệu được quản lý trên AWS, chúng ta chỉ truy cập và quản lý ở mức RDBMS, không thể truy cập và quản lý ở mức hệ điều hành. Bao gồm Aurora, MySQL, PostgreSQL, MSSQL, Oracle, và MariaDB. Amazon RDS cung cấp các tính năng:\nTự động sao lưu (cả log và database – tối đa 35 ngày). Tạo bản sao chỉ đọc (Read Replica) phục vụ cho các workload đọc (reporting). Read Replica có thể được tách ra và chuyển thành một Primary node. Chạy với cơ chế tự động failover, Primary/Standby, hay còn gọi là cơ chế Multi-AZ. RDS thường được sử dụng cho các ứng dụng OLTP. RDS cung cấp tính năng mã hóa dữ liệu at rest và in transit. RDS cũng được bảo vệ bởi tính năng tường lửa giống như EC2 (Security Group và NACL). Thay đổi quy mô (thay đổi instance size). Tự động tăng dung lượng lưu trữ (Storage Auto Scale).\nNội dung Tạo DB Subnet Group Khởi chạy RDS Instance "
+},
+{
+	"uri": "//localhost:1313/3-connect-rds/4-create-lambda-function/",
+	"title": "Khởi chạy RDS Instance",
+	"tags": [],
+	"description": "",
+	"content": "Tạo cơ sở dữ liệu "
+},
+{
+	"uri": "//localhost:1313/4-configure-apigateway/",
+	"title": "Khởi tạo Load Balancer",
+	"tags": [],
+	"description": "",
+	"content": "Ở bước này, chúng ta sẽ triển khai Load Balancer điều phối các request từ người dùng đến các EC2 instance chạy ứng dụng ShareNote của chúng ta.\nTạo Load Balancer Truy cập vào EC2 Management Console. Ở thanh điều hướng bên trái, kéo xuống dưới và click Load Balancers. Ở trang danh sách Load Balancer, click Create Load Balancer. Ở trang Select load balancer type, chọn Create ở mục Application Load Balancer. Ở trang Create Application Load Balancer, thiết lập các thông số như sau: Basic Configuration: Name: Nhập tên của Load Balancer (VD: sharenote-lb) Scheme: internet-facing IP address type: ipv4 Kéo màn hình xuống dưới, tại mục Network mapping. Tại mục VPC chọn VPC default. Tại mục Mappings Chọn hai AZ ap-southeast-1a và ap-southeast-1b Kéo màn hình xuống dưới, tại mục Security Groups, click chọn sharenote-sg. Tại mục Listeners and routing , phần Default action click chọn sharenote-tg target group mà chúng ta đã tạo ở bước trước đó. Kéo màn hình xuống dưới cùng, click Create load balancer. Trang tạo Load Balancer thành công sẽ hiển thị ra cho bạn. Click View load balancers để trở về danh sách Load Balancer Quá trình tạo Load Balancer sẽ mất khoảng 5-10 phút để hoàn thành. Bạn có thể kiểm tra sự thay đổi trạng thái từ provisioning sang active ở danh sách Load Balancer.\nHãy ghi chú lại DNS name của Load Balancer lại vì đây sẽ là địa chỉ chúng ta dùng để truy cập vào ứng dụng dược triển khai. Truy cập địa chỉ DNS trên browser của bạn, đảm bảo có thể truy cập tới ứng dụng Share Note. Tuy nhiên lúc này chúng ta chỉ có 1 máy chủ EC2 duy nhất. Tiếp theo chúng ta sẽ tiến hành cấu hình tính năng Auto Scaling Group, giúp tự động tăng số lượng EC2 instance của chúng ta khi lượng truy cập tăng cao.\n"
+},
+{
+	"uri": "//localhost:1313/3-connect-rds/5-connect-lambda-rds/",
+	"title": "Khởi chạy RDS Instance",
+	"tags": [],
+	"description": "",
+	"content": "Tạo cơ sở dữ liệu "
+},
+{
+	"uri": "//localhost:1313/5-configure-cognito/",
+	"title": "Khởi tạo Auto Scaling Group",
+	"tags": [],
+	"description": "",
+	"content": "Ở phần này, chúng ta sẽ triển khai một Auto Scaling Group cho ứng dụng ShareNote để đảm bảo ứng dụng của chúng ta sẽ được triển khai với tính sẵn sàng cao, và có khả năng tăng số lượng EC2 instance khi người dùng truy cập vào hệ thống tăng.\nTạo AutoScaling Group Truy cập vào EC2 Management Console. Ở thanh điều hướng bên trái, chọn Auto Scaling Groups. Ở trang Auto Scaling Groups, chọn Create an Auto Scaling group. Bắt đầu với trang Choose launch template or configuration, thiết lập các thông tin như sau: Name: Nhập vào tên của Auto Scaling Group (VD: sharenote-asg) Launch template: Chọn launch template chúng ta đã tạo trước đó (VD: sharenote-template) Kéo màn hình xuống dưới và click Next. Ở trang Configure settings: Mục Network, phần Subnets Lựa chọn 2 subnet ở hai AZ ap-northeast-1a và ap-northeast-1b. Kéo màn hình xuống dưới và click Next. Ở trang Configure advanced options: Mục Load balancing - optional click chọn Attach to an existing load balancer. Click chọn Choose from your load balancer target groups. Click chọn target group mà chúng ta đã tạo trước đó. (VD: sharenote-tg) Kéo màn hình xuống dưới và click Next. Ở trang Configure group size and scaling policies: Group size - optional: Desired capacity: Nhập 1. (Default) Minimum capacity: Nhập 1. (Default) Maximum capacity: Nhập 3. Tại mục Scaling policies - optional: Lựa chọn trong bài thực hành này nhằm tạo điều kiện dễ dàng hơn cho bước kiểm tra được thực hiện tiếp theo. Bạn hoàn toàn có thể thiết lập chính sách scale tài nguyên theo nhu cầu của bạn. Chọn Target tracking scaling policy. Metric type: Chọn Application Load Balancer request count per target. Target group: Chọn target group mà chúng ta đã tạo (VD: sharenote-tg). Target value: Nhập 30. Click Next. Ở trang Add notifications, chọn Next. Ở trang Add tags, chọn Next. Ở trang Review, chọn Create Auto Scaling Group Quá trình khởi tạo Auto Scaling Group sẽ được thực hiện, Auto Scaling Group vừa được tạo sẽ hiển thị trong danh sách, và bạn có thể chọn vào nó để xem thông tin chi tiết.\nVhúng ta có thể theo dõi các EC2 instance hiện có trong Auto Scaling Group ở trang Instance management. Các instance có tình trạng InService là các instance đã sẵn sàng hoạt động.\nĐến đây, chúng ta đã hoàn thành việc triển khai ứng dụng Share Note với Auto Scaling Group và Elastic Load Balancer. Với mô hình này, bạn có thể triển khai ứng dụng của mình với tính sẵn sàng cao, dễ dàng mở rộng và cân bằng tải các yêu cầu từ người dùng.\nỞ bước kế tiếp, chúng ta sẽ thử nghiệm tính năng thêm EC2 Instance dựa trên việc tăng số lượng truy cập đến ứng dụng của chúng ta.\nTrước khi thực hiện bước kế tiếp hãy kiểm tra cấu hình Automatic scaling của Auto Scaling Group của chúng ta có giống như dưới đây không. Nếu quá trình tạo scaling policy bị lỗi, chúng ta có thể click Create dynamic scaling policy để tiến hành tạo lại scaling policy mới.\n"
+},
+{
+	"uri": "//localhost:1313/6-testing/",
+	"title": "Kiểm tra Kết quả",
+	"tags": [],
+	"description": "",
+	"content": "Trong bài thực hành này, chúng ta sẽ kiếm tra truy cập tới ShareNote và tiến hành tăng số lượng yêu cầu truy cập đến ứng dụng thông qua việc mở đồng loạt nhiều kết nối sử dụng công cụ Webserver Stress Tool 8. Bạn hãy nhấn vào link này để tải về.\nBạn cũng có thể tải về trực tiếp tại link dưới:\nWebserver Stress Tool 8\rwebstress.zip\r(6098 KB)\rKiểm tra khả năng tự mở rộng của ứng dụng ShareNote được triển khai Giải nén file zip và cài đặt Webserver Stress Tool 8 với tùy chọn mặc định. Khởi dộng Webserver Stress Tool 8 để tiến hành tạo số lượng truy cập lớn đến Endpoint của Load Balancer. Nhấn vào tab Test Type và nhập thông số như hình dưới đây: Run Unit : 100000 Number of Users : 101 Click Delay : 1 Nhấn vào tab URLs, copy DNSName của ứng dụng ShareNote vào ô URL ( DNSName khi bạn tạo Load Balancer ở bước 4.Khởi tạo Load Balancer), và nhấn Start Test Sau một khoảng thời gian, kiểm tra phản hồi của Auto Scaling Group. Ta thấy số lượng instance được tăng lên số lượng tối đa mà chúng ta thiết lập là 3. Kiểm tra truy cập vào ứng dụng từ trình duyệt không bị gián đoạn. Chúc mừng bạn vừa hoàn thành bài thực hành Triển khai ứng dụng ShareNote với Auto Scaling Group và Elastic Load Balancer.\n"
+},
+{
+	"uri": "//localhost:1313/7-clean-up/",
+	"title": "Clean up resource",
+	"tags": [],
+	"description": "",
+	"content": "We will clean up resources in the following order:\nGo to API Gateway to delete the created resource\nGo to Cognito to delete the created resource\nSelect Delete Cognito domain Select Deactivate deletion protection Go to Lambda to delete the created function.\nAutomatically delete the generated Network interfaces. Check again, if it is still related to the resource, delete it to avoid incurring costs. Go to Amazon RDS service\nOpen the Amazon RDS console.\nIn the navigation pane, select Subnet groups.\nSelect the DB subnet group related to the lab.\nSelect Delete, then select Delete in the confirmation window.\nSelect the RDS instance that was created\nGo to Modify. Scroll down and uncheck Enable deletion protection\nSelect Action and select delete\nUncheck Create final snapshot\nUncheck Retain automated backups\nWait a few minutes to delete\nAfter deleting the db instance, check the Snapshot, Automated Backup versions (if any, delete if not necessary to avoid incurring costs)\nIn the subnet group section. Delete the subnet group related to the created VPC.\nTerminate EC2 instance\nAccess EC2 Management Console.\nOn the left navigation bar, select Instances.\nSelect all EC2 Instances related to the lab.\nClick Actions.\nClick Manage Instance State.\nSelect Terminate.\nOpen the Amazon EC2 console.\nSelect Amazon EC2 Dashboard, then select Elastic IPs.\nSelect Elastic IP address related to the lab.\nFrom Actions, select Release Elastic IP addresses.\nOn the confirmation page, select Release.\nGo to Network interfaces\nCheck for missing Network interfaces related to the lesson\nTo delete VPC and related resources:\nAccess the endpoint, delete the resource that was created during the practice, the endpoint containing the created VPC.\nOpen the Amazon VPC dashboard.\nDelete the VPC.\nSelect VPC Dashboard, then select VPC.\nSelect the VPC you want to delete.\nFrom Actions, select Delete VPC.\nOn the confirmation page, type delete, then select Delete.\nOpen the Amazon VPC dashboard.\nSelect VPC Dashboard, then select Security Groups.\nCheck for missing security groups after deleting the VPC\nSelect the security group related to the lab.\nSelect Actions, select Delete security groups, and then select Delete to confirm.\n"
+},
+{
+	"uri": "//localhost:1313/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "//localhost:1313/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]
