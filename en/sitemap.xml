@@ -2,6 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>//localhost:1313/5-configure-cognito/1-create-user-pool/</loc>
+    <lastmod>1970-01-01T07:33:44+07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/5-configure-cognito/1-create-user-pool/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/5-configure-cognito/1-create-user-pool/"
+                />
+  </url><url>
     <loc>//localhost:1313/1-introduction/</loc>
     <lastmod>1970-01-01T07:33:44+07:00</lastmod>
     <xhtml:link
@@ -41,6 +54,19 @@
                 href="//localhost:1313/"
                 />
   </url><url>
+    <loc>//localhost:1313/4-configure-apigateway/1-create-method-api/</loc>
+    <lastmod>1970-01-01T07:33:40+07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/4-configure-apigateway/1-create-method-api/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/4-configure-apigateway/1-create-method-api/"
+                />
+  </url><url>
     <loc>//localhost:1313/3-connect-rds/1-db-subnet-group/</loc>
     <lastmod>1970-01-01T07:33:40+07:00</lastmod>
     <xhtml:link
@@ -52,6 +78,19 @@
                 rel="alternate"
                 hreflang="en"
                 href="//localhost:1313/3-connect-rds/1-db-subnet-group/"
+                />
+  </url><url>
+    <loc>//localhost:1313/4-configure-apigateway/2-check-api-with-postman/</loc>
+    <lastmod>1970-01-01T07:33:44+07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/4-configure-apigateway/2-check-api-with-postman/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/4-configure-apigateway/2-check-api-with-postman/"
                 />
   </url><url>
     <loc>//localhost:1313/3-connect-rds/2-start-db/</loc>
@@ -78,6 +117,19 @@
                 rel="alternate"
                 hreflang="en"
                 href="//localhost:1313/2-prepareration/2-create-security-group/"
+                />
+  </url><url>
+    <loc>//localhost:1313/5-configure-cognito/2-create-group-cognito/</loc>
+    <lastmod>1970-01-01T07:33:44+07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/5-configure-cognito/2-create-group-cognito/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/5-configure-cognito/2-create-group-cognito/"
                 />
   </url><url>
     <loc>//localhost:1313/2-prepareration/</loc>
@@ -132,6 +184,19 @@
                 href="//localhost:1313/3-connect-rds/"
                 />
   </url><url>
+    <loc>//localhost:1313/4-configure-apigateway/</loc>
+    <lastmod>2021-06-08T18:57:03+07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/4-configure-apigateway/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/4-configure-apigateway/"
+                />
+  </url><url>
     <loc>//localhost:1313/3-connect-rds/4-create-lambda-function/</loc>
     <lastmod>1970-01-01T07:33:44+07:00</lastmod>
     <xhtml:link
@@ -145,17 +210,17 @@
                 href="//localhost:1313/3-connect-rds/4-create-lambda-function/"
                 />
   </url><url>
-    <loc>//localhost:1313/4-configure-apigateway/</loc>
-    <lastmod>1970-01-01T07:33:40+07:00</lastmod>
+    <loc>//localhost:1313/5-configure-cognito/</loc>
+    <lastmod>2021-06-08T18:57:03+07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/4-configure-apigateway/"
+                href="//localhost:1313/vi/5-configure-cognito/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/4-configure-apigateway/"
+                href="//localhost:1313/5-configure-cognito/"
                 />
   </url><url>
     <loc>//localhost:1313/3-connect-rds/5-connect-lambda-rds/</loc>
@@ -169,19 +234,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="//localhost:1313/3-connect-rds/5-connect-lambda-rds/"
-                />
-  </url><url>
-    <loc>//localhost:1313/5-configure-cognito/</loc>
-    <lastmod>1970-01-01T07:33:40+07:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/5-configure-cognito/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/5-configure-cognito/"
                 />
   </url><url>
     <loc>//localhost:1313/6-testing/</loc>
