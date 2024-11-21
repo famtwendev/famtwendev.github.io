@@ -12,21 +12,21 @@
     <title>Cấu hình VPC :: Triển khai Ứng dụng ShareNote với Auto Scaling Group</title>
 
     
-    <link href="/css/nucleus.css?1732176783" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1732176783" rel="stylesheet">
-    <link href="/css/hybrid.css?1732176783" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1732176783" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1732176783" rel="stylesheet">
-    <link href="/css/auto-complete.css?1732176783" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1732176783" rel="stylesheet">
-    <link href="/css/theme.css?1732176783" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1732176783" rel="stylesheet">
+    <link href="/css/nucleus.css?1732190048" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1732190048" rel="stylesheet">
+    <link href="/css/hybrid.css?1732190048" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1732190048" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1732190048" rel="stylesheet">
+    <link href="/css/auto-complete.css?1732190048" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1732190048" rel="stylesheet">
+    <link href="/css/theme.css?1732190048" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1732190048" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1732176783" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1732190048" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1732176783"></script>
+    <script src="/js/jquery-3.3.1.min.js?1732190048"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1732176783"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1732176783"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1732190048"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1732190048"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1732176783"></script>
+<script type="text/javascript" src="/js/search.js?1732190048"></script>
 
     
   </div>
@@ -195,13 +195,13 @@
  
   
     
-    <li data-nav-id="/vi/2-prepareration/3-create-role/" title="Cấu hình Role cho Lambda" class="dd-item 
+    <li data-nav-id="/vi/2-prepareration/3-create-role/" title="Tạo Role cho Lambda" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-prepareration/3-create-role/">
-          <b>2.3 </b>Cấu hình Role cho Lambda
+          <b>2.3 </b>Tạo Role cho Lambda
           
             <i class="fas fa-check read-icon"></i>
           
@@ -317,13 +317,13 @@
  
   
     
-    <li data-nav-id="/vi/3-connect-rds/3-launch-ec2/" title="Khởi chạy RDS Instance" class="dd-item 
+    <li data-nav-id="/vi/3-connect-rds/3-launch-ec2/" title="Tạo EC2 Instance" class="dd-item 
         
         
         
         ">
       <a href="/vi/3-connect-rds/3-launch-ec2/">
-          <b>3.3 </b>Khởi chạy RDS Instance
+          <b>3.3 </b>Tạo EC2 Instance
           
             <i class="fas fa-check read-icon"></i>
           
@@ -345,13 +345,13 @@
  
   
     
-    <li data-nav-id="/vi/3-connect-rds/4-create-lambda-function/" title="Khởi chạy RDS Instance" class="dd-item 
+    <li data-nav-id="/vi/3-connect-rds/4-create-lambda-function/" title="Khởi tạo hàm lambda" class="dd-item 
         
         
         
         ">
       <a href="/vi/3-connect-rds/4-create-lambda-function/">
-          <b>3.4 </b>Khởi chạy RDS Instance
+          <b>3.4 </b>Khởi tạo hàm lambda
           
             <i class="fas fa-check read-icon"></i>
           
@@ -373,13 +373,13 @@
  
   
     
-    <li data-nav-id="/vi/3-connect-rds/5-connect-lambda-rds/" title="Khởi chạy RDS Instance" class="dd-item 
+    <li data-nav-id="/vi/3-connect-rds/5-connect-lambda-rds/" title="Kết nối Lambda với RDS Instance" class="dd-item 
         
         
         
         ">
       <a href="/vi/3-connect-rds/5-connect-lambda-rds/">
-          <b>3.5 </b>Khởi chạy RDS Instance
+          <b>3.5 </b>Kết nối Lambda với RDS Instance
           
             <i class="fas fa-check read-icon"></i>
           
@@ -664,7 +664,7 @@
   <ul>
     <li>
       <ul>
-        <li></li>
+        <li><a href="#cấu-hình-vpc">Cấu hình VPC</a></li>
       </ul>
     </li>
   </ul>
@@ -692,29 +692,32 @@
 
 
 
-	<h4 id="cấu-hình-vpc">Cấu hình VPC</h4>
+	<h3 id="cấu-hình-vpc">Cấu hình VPC</h3>
 <ol>
-<li>Ở giao diện AWS console thực hiện</li>
-</ol>
+<li>Ở giao diện AWS console thực hiện
 <ul>
 <li>Tìm kiếm và chọn VPC</li>
 </ul>
+</li>
+</ol>
 <p><img alt="VPC Search" src="/images/2/2_1/1.png?width=90pc"></p>
 <ol start="2">
-<li>Ở giao diện quản lý VPC</li>
-</ol>
+<li>Ở giao diện quản lý VPC
 <ul>
 <li>Chọn <strong>Your VPC</strong></li>
 <li>Chọn <strong>Create VPC</strong></li>
 </ul>
+</li>
+</ol>
 <p><img alt="VPC Search" src="/images/2/2_1/2.png?width=90pc"></p>
 <ol start="3">
-<li>Xuất hiện bảng cấu hình cho VPC</li>
-</ol>
+<li>Xuất hiện bảng cấu hình cho VPC
 <ul>
 <li>Chọn <strong>VPC and more</strong></li>
 <li>Đặt tên <code>FCJ-Lab</code></li>
 </ul>
+</li>
+</ol>
 <p><img alt="VPC Search" src="/images/2/2_1/3.png?width=90pc"></p>
 <ul>
 <li>
@@ -736,20 +739,22 @@
 </ul>
 <p><img alt="VPC Search" src="/images/2/2_1/4.png?width=90pc"></p>
 <ol start="4">
-<li>Sau khi tạo xong VPC, chúng ta tiến hành kiểm tra thông tin VPC vừa tạo.</li>
-</ol>
+<li>Sau khi tạo xong VPC, chúng ta tiến hành kiểm tra thông tin VPC vừa tạo.
 <ul>
 <li>Chọn <strong>FCJ-Lab-vpc</strong> vừa tạo để xem tổng quan</li>
 </ul>
+</li>
+</ol>
 <p><img alt="VPC Search" src="/images/2/2_1/5.png?width=90pc"></p>
 <ol start="5">
-<li>Cấu hình Public Subnet</li>
-</ol>
-<p>Ở giao diện quản lý VPC, ở mục chọn ở bên trái kéo xuống dưới</p>
+<li>Cấu hình Public Subnet
+Ở giao diện quản lý VPC, ở mục chọn ở bên trái kéo xuống dưới
 <ul>
 <li>Chọn <strong>Subnets</strong></li>
 <li>Tìm kiếm <strong><em>FCJ-Lab</em></strong></li>
 </ul>
+</li>
+</ol>
 <p><img alt="VPC Search" src="/images/2/2_1/6.png?width=90pc"></p>
 <p>Chúng ta sẽ thấy có <strong>2 subnet public</strong>: <strong>FCJ-Lab-subnet-public1-ap-southeast-1a, FCJ-Lab-subnet-public2-ap-southeast-1b</strong>
 Đầu tiên chúng ta sẽ setting cho <strong>FCJ-Lab-subnet-public1-ap-southeast-1b</strong></p>
@@ -759,10 +764,13 @@
 <li>Chọn Edit subnet settings</li>
 </ul>
 <p><img alt="VPC Search" src="/images/2/2_1/7.png?width=90pc"></p>
-<p>Xuất hiện bảng cấu hình cho public subnet</p>
+<ul>
+<li>Xuất hiện bảng cấu hình cho public subnet
 <ul>
 <li>Click chọn <strong>Enable auto-assign public IPv4 address</strong></li>
 <li>Chọn <strong>Save</strong></li>
+</ul>
+</li>
 </ul>
 <p><img alt="VPC Search" src="/images/2/2_1/8.png?width=90pc"></p>
 <p>Tương tự, chúng ta sẽ setting cho <strong>FCJ-Lab-subnet-public2-ap-southeast-1b</strong>
@@ -1077,19 +1085,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1732176783"></script>
-    <script src="/js/perfect-scrollbar.min.js?1732176783"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1732176783"></script>
-    <script src="/js/jquery.sticky.js?1732176783"></script>
-    <script src="/js/featherlight.min.js?1732176783"></script>
-    <script src="/js/highlight.pack.js?1732176783"></script>
+    <script src="/js/clipboard.min.js?1732190048"></script>
+    <script src="/js/perfect-scrollbar.min.js?1732190048"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1732190048"></script>
+    <script src="/js/jquery.sticky.js?1732190048"></script>
+    <script src="/js/featherlight.min.js?1732190048"></script>
+    <script src="/js/highlight.pack.js?1732190048"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1732176783"></script>
-    <script src="/js/learn.js?1732176783"></script>
-    <script src="/js/hugo-learn.js?1732176783"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1732190048"></script>
+    <script src="/js/learn.js?1732190048"></script>
+    <script src="/js/hugo-learn.js?1732190048"></script>
 
-    <link href="/mermaid/mermaid.css?1732176783" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1732176783"></script>
+    <link href="/mermaid/mermaid.css?1732190048" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1732190048"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

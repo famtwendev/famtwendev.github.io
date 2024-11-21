@@ -4,7 +4,7 @@
 	"title": "Cấu hình VPC",
 	"tags": [],
 	"description": "",
-	"content": "Cấu hình VPC Ở giao diện AWS console thực hiện Tìm kiếm và chọn VPC Ở giao diện quản lý VPC Chọn Your VPC Chọn Create VPC Xuất hiện bảng cấu hình cho VPC Chọn VPC and more Đặt tên FCJ-Lab Chọn Availability Zones (AZs): 2\nChọn public subnets: 2\nChọn private subnets: 2\nỞ phần VPC endpoint\nChọn None Chọn Create VPC Sau khi tạo xong VPC, chúng ta tiến hành kiểm tra thông tin VPC vừa tạo. Chọn FCJ-Lab-vpc vừa tạo để xem tổng quan Cấu hình Public Subnet Ở giao diện quản lý VPC, ở mục chọn ở bên trái kéo xuống dưới\nChọn Subnets Tìm kiếm FCJ-Lab Chúng ta sẽ thấy có 2 subnet public: FCJ-Lab-subnet-public1-ap-southeast-1a, FCJ-Lab-subnet-public2-ap-southeast-1b Đầu tiên chúng ta sẽ setting cho FCJ-Lab-subnet-public1-ap-southeast-1b\nChọn FCJ-Lab-subnet-public1-ap-southeast-1a Chọn Action Chọn Edit subnet settings Xuất hiện bảng cấu hình cho public subnet\nClick chọn Enable auto-assign public IPv4 address Chọn Save Tương tự, chúng ta sẽ setting cho FCJ-Lab-subnet-public2-ap-southeast-1b Như vậy, chúng ta vừa cấu hình xong VPC và enable public IPv4 cho subnet public.\n"
+	"content": "Cấu hình VPC Ở giao diện AWS console thực hiện Tìm kiếm và chọn VPC Ở giao diện quản lý VPC Chọn Your VPC Chọn Create VPC Xuất hiện bảng cấu hình cho VPC Chọn VPC and more Đặt tên FCJ-Lab Chọn Availability Zones (AZs): 2\nChọn public subnets: 2\nChọn private subnets: 2\nỞ phần VPC endpoint\nChọn None Chọn Create VPC Sau khi tạo xong VPC, chúng ta tiến hành kiểm tra thông tin VPC vừa tạo. Chọn FCJ-Lab-vpc vừa tạo để xem tổng quan Cấu hình Public Subnet Ở giao diện quản lý VPC, ở mục chọn ở bên trái kéo xuống dưới Chọn Subnets Tìm kiếm FCJ-Lab Chúng ta sẽ thấy có 2 subnet public: FCJ-Lab-subnet-public1-ap-southeast-1a, FCJ-Lab-subnet-public2-ap-southeast-1b Đầu tiên chúng ta sẽ setting cho FCJ-Lab-subnet-public1-ap-southeast-1b\nChọn FCJ-Lab-subnet-public1-ap-southeast-1a Chọn Action Chọn Edit subnet settings Xuất hiện bảng cấu hình cho public subnet Click chọn Enable auto-assign public IPv4 address Chọn Save Tương tự, chúng ta sẽ setting cho FCJ-Lab-subnet-public2-ap-southeast-1b Như vậy, chúng ta vừa cấu hình xong VPC và enable public IPv4 cho subnet public.\n"
 },
 {
 	"uri": "//localhost:1313/vi/1-introduction/",
@@ -39,24 +39,10 @@
 	"title": "Create Security Group",
 	"tags": [],
 	"description": "",
-	"content": "Cấu hình Security Group Cấu hình Security Group cho EC2 Instance\nTrong giao diện quản lý VPC, hãy chọn tùy chọn bên trái. Chọn Security Group Chọn Create Security Group Cấu hình cho Security Group\nTrong phần Basic details\nĐặt tên cho Security group: FCJ-Lab-sg-public\nMô tả Security group: Security group for FCJ Lab\nVPC: FCJ-Lab-vpc\nTrong phần Inbound rules Chúng ta sẽ thêm các quy tắc sau:\nNhập SSH source Anywhere-IPv4 Nhập HTTP source Anywhere-IPv4 Nhập HTTPS source Anywhere-IPv4 Nhập Custom TCP, port range 3000, source Anywhere-IPv4 Trong phần Outbound Rule, chúng ta sẽ để mặc định\nNhấp vào Create security group\nCấu hình Security Group cho database instance\nTương tự như bước tạo security group cho EC2 ở trên. Cấu hình cho Security Group DB Trong phần Basic details Tên security group: FCJ-Lab-sg-db Mô tả Security group for RDS database instance VPC FCJ-Lab-vpc Trong phần Inbound Chọn Type MYSQL/Aurora Source chọn FCJ-Lab-sg Trong phần Outbound. Chúng ta để nguyên mặc định Chọn Create security group "
+	"content": "Cấu hình Security Group Cấu hình Security Group cho EC2 Instance\nTrong giao diện quản lý VPC, hãy chọn tùy chọn bên trái. Chọn Security Group Chọn Create Security Group Cấu hình cho Security Group Trong phần Basic details Đặt tên cho Security group: FCJ-Lab-sg-public Mô tả Security group: Security group for FCJ Lab VPC: FCJ-Lab-vpc Trong phần Inbound rules Chúng ta sẽ thêm các quy tắc sau: Nhập SSH source Anywhere-IPv4 Nhập HTTP source Anywhere-IPv4 Nhập HTTPS source Anywhere-IPv4 Nhập Custom TCP, port range 3000, source Anywhere-IPv4 Trong phần Outbound Rule, chúng ta sẽ để mặc định Nhấp vào Create security group Cấu hình Security Group cho database instance\nTương tự như bước tạo security group cho EC2 ở trên. Cấu hình cho Security Group DB Trong phần Basic details Tên security group: FCJ-Lab-sg-db Mô tả Security group for RDS database instance VPC FCJ-Lab-vpc Trong phần Inbound Chọn Type MYSQL/Aurora Source chọn FCJ-Lab-sg Trong phần Outbound. Chúng ta để nguyên mặc định Chọn Create security group "
 },
 {
 	"uri": "//localhost:1313/vi/3-connect-rds/2-start-db/",
-	"title": "Khởi chạy RDS Instance",
-	"tags": [],
-	"description": "",
-	"content": "Tổng quan RDS "
-},
-{
-	"uri": "//localhost:1313/vi/2-prepareration/3-create-role/",
-	"title": "Cấu hình Role cho Lambda",
-	"tags": [],
-	"description": "",
-	"content": "Tạo Role cho Lambda Ở giao diện Console:\nTìm kiếm từ khóa: IAM Chọn Create Role Thông tin điền vào:\nChọn loại sử dụng: AWS service Dịch vụ: Lambda Chọn Next Tìm kiếm từ khóa tương ứng chọn các permission sau: Chọn AmazonRDSFullAccess Chọn AmazonEC2FullAccess Chọn AWSLambdaVPCAccessExecutionRole Chọn AmazonVPCFullAccess Nhập tên role: RoleLambdatochangedataRDS Kiểm tra kỹ lại và chọn Create role "
-},
-{
-	"uri": "//localhost:1313/vi/3-connect-rds/3-launch-ec2/",
 	"title": "Khởi chạy RDS Instance",
 	"tags": [],
 	"description": "",
@@ -67,11 +53,25 @@
 	"title": "Khởi chạy RDS Instance",
 	"tags": [],
 	"description": "",
-	"content": "Tổng quan RDS Amazon RDS là cơ sở dữ liệu được quản lý trên AWS, chúng ta chỉ truy cập và quản lý ở mức RDBMS, không thể truy cập và quản lý ở mức hệ điều hành. Bao gồm Aurora, MySQL, PostgreSQL, MSSQL, Oracle, và MariaDB. Amazon RDS cung cấp các tính năng:\nTự động sao lưu (cả log và database – tối đa 35 ngày). Tạo bản sao chỉ đọc (Read Replica) phục vụ cho các workload đọc (reporting). Read Replica có thể được tách ra và chuyển thành một Primary node. Chạy với cơ chế tự động failover, Primary/Standby, hay còn gọi là cơ chế Multi-AZ. RDS thường được sử dụng cho các ứng dụng OLTP. RDS cung cấp tính năng mã hóa dữ liệu at rest và in transit. RDS cũng được bảo vệ bởi tính năng tường lửa giống như EC2 (Security Group và NACL). Thay đổi quy mô (thay đổi instance size). Tự động tăng dung lượng lưu trữ (Storage Auto Scale).\nNội dung Tạo DB Subnet Group Khởi chạy RDS Instance "
+	"content": "Tổng quan Amazon RDS Amazon RDS là cơ sở dữ liệu được quản lý trên AWS, chúng ta chỉ truy cập và quản lý ở mức RDBMS,không thể truy cập và quản lý ở mức hệ điều hành. Bao gồm Aurora, MySQL, PostgreSQL, MSSQL, Oracle, và MariaDB. Amazon RDS cung cấp các tính năng:\nTự động sao lưu (cả log và database – tối đa 35 ngày). Tạo bản sao chỉ đọc (Read Replica) phục vụ cho các workload đọc (reporting). Read Replica có thể được tách ra và chuyển thành một Primary node. Chạy với cơ chế tự động failover, Primary/Standby, hay còn gọi là cơ chế Multi-AZ. RDS thường được sử dụng cho các ứng dụng OLTP. RDS cung cấp tính năng mã hóa dữ liệu at rest và in transit. RDS cũng được bảo vệ bởi tính năng tường lửa giống như EC2 (Security Group và NACL). Thay đổi quy mô (thay đổi instance size). Tự động tăng dung lượng lưu trữ (Storage Auto Scale). Pricing Về cơ bản RDS tính tiền dựa trên các thông số Instance size. Instance size càng lớn cost càng cao. Có hỗ trợ reserve instance tương tự EC2. Lượng data lưu trữ (GB/month) Dung lượng các bản snapshot được tạo ra. Các tính năng khác vd Backtracking đối với Aurora. Mô hình triển khai RDS RDS Có thể được triển khai theo một số mô hình sau\nSingle Instance Single Instance with Multi-AZ option = yes Master – Read Only cluster Master – Read Only cluster with Multi-AZ option = yes Master – Multi Read cluster Single Instance Chỉ có 1 database instance duy nhất được tạo ra trên 1 Availability Zone (AZ). Nếu sự cố xảy ra ở cấp độ AZ, database không thể truy cập.Phù hợp cho môi trường Dev-Test để tiết kiệm chi phí\nSingle Instance with Multi-AZ option enabled\nMột bản sao của instance sẽ được tạo ra ở AZ khác và hoạt động dưới mode standby. Nhiệm vụ của instance standby này là sync data từ master, không thể truy cập instance này. Khi có sự cố, instance standby sẽ được chuyển lên thành master (việc này được AWS thực hiện tự động, endpoint url được giữ nguyên). Nếu enable multi AZ, số tiền bỏ ra sẽ x2. Phù hợp cho Database Production. Master – Read Only cluster\nMột instance với mode ReadOnly sẽ được tạo ra và liên tục replica data từ master instance. Instance này chỉ có thể đọc data. Phù hợp cho hệ thống có workload read \u0026gt; write, muốn tối ưu performance của Database. Sau khi thiết lập quan hệ, instance được tạo ra sẽ kết hợp thành 1 cluster. Trong trạng thái 2 instance đã hình thành cluster, nếu Master instance gặp sự cố, failover sẽ được tự động thực hiện, ReadOnly instance được promote lên làm Master. Lưu ý: Nếu 2 instance được tạo ra riêng biệt sau đó mới thiết lập quan hệ read-replica, endpoint của 2 instance sẽ riêng biệt nên saukhi failover, cần chỉnh lại connection từ App.\rNên tạo cluster sau đó mới add node read vào để quản lý connection ở cluster level (số lượng node read có thể tuỳ chọn) Master – Read Only cluster with Multi-AZ option = yes\nTương tự mô hình Master – Read Only tuy nhiên các node đều được bật multi-AZ enabled. Chi phí sẽ gấp 4 lần mô hình Single Instance. Nên tạo RDS Cluster hay RDS Instance? AWS cung cấp cơ chế cho phép tạo ra 1 cluster RDS giúp quản lý node và failover dễ dàng hơn. Ưu điểm so với việc tạo RDS instance thông thường:\nQuản lý endpoint ở cấp độ cluster, không bị thay đổi khi instance trong cluster gặp sự cố. Failover tự động. Scale read instance dễ dàng. Nội dung Tạo DB Subnet Group Khởi chạy RDS Instance Tạo EC2 Instance Tạo hàm lamda Khởi chạy RDS Instance "
+},
+{
+	"uri": "//localhost:1313/vi/3-connect-rds/3-launch-ec2/",
+	"title": "Tạo EC2 Instance",
+	"tags": [],
+	"description": "",
+	"content": "Tổng quan RDS "
+},
+{
+	"uri": "//localhost:1313/vi/2-prepareration/3-create-role/",
+	"title": "Tạo Role cho Lambda",
+	"tags": [],
+	"description": "",
+	"content": "Tạo Role cho Lambda Ở giao diện Console:\nTìm kiếm từ khóa: IAM Chọn Create Role Thông tin điền vào:\nChọn loại sử dụng: AWS service Dịch vụ: Lambda Chọn Next Tìm kiếm từ khóa tương ứng chọn các permission sau: Chọn AmazonRDSFullAccess Chọn AmazonEC2FullAccess Chọn AWSLambdaVPCAccessExecutionRole Chọn AmazonVPCFullAccess Nhập tên role: RoleLambdatochangedataRDS Kiểm tra kỹ lại và chọn Create role "
 },
 {
 	"uri": "//localhost:1313/vi/3-connect-rds/4-create-lambda-function/",
-	"title": "Khởi chạy RDS Instance",
+	"title": "Khởi tạo hàm lambda",
 	"tags": [],
 	"description": "",
 	"content": "Tổng quan RDS "
@@ -85,7 +85,7 @@
 },
 {
 	"uri": "//localhost:1313/vi/3-connect-rds/5-connect-lambda-rds/",
-	"title": "Khởi chạy RDS Instance",
+	"title": "Kết nối Lambda với RDS Instance",
 	"tags": [],
 	"description": "",
 	"content": "Tổng quan RDS "

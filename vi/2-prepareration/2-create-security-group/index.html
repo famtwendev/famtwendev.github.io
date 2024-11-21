@@ -12,21 +12,21 @@
     <title>Create Security Group :: Triển khai Ứng dụng ShareNote với Auto Scaling Group</title>
 
     
-    <link href="/css/nucleus.css?1732176783" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1732176783" rel="stylesheet">
-    <link href="/css/hybrid.css?1732176783" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1732176783" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1732176783" rel="stylesheet">
-    <link href="/css/auto-complete.css?1732176783" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1732176783" rel="stylesheet">
-    <link href="/css/theme.css?1732176783" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1732176783" rel="stylesheet">
+    <link href="/css/nucleus.css?1732190048" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1732190048" rel="stylesheet">
+    <link href="/css/hybrid.css?1732190048" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1732190048" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1732190048" rel="stylesheet">
+    <link href="/css/auto-complete.css?1732190048" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1732190048" rel="stylesheet">
+    <link href="/css/theme.css?1732190048" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1732190048" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1732176783" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1732190048" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1732176783"></script>
+    <script src="/js/jquery-3.3.1.min.js?1732190048"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1732176783"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1732176783"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1732190048"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1732190048"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1732176783"></script>
+<script type="text/javascript" src="/js/search.js?1732190048"></script>
 
     
   </div>
@@ -195,13 +195,13 @@
  
   
     
-    <li data-nav-id="/vi/2-prepareration/3-create-role/" title="Cấu hình Role cho Lambda" class="dd-item 
+    <li data-nav-id="/vi/2-prepareration/3-create-role/" title="Tạo Role cho Lambda" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-prepareration/3-create-role/">
-          <b>2.3 </b>Cấu hình Role cho Lambda
+          <b>2.3 </b>Tạo Role cho Lambda
           
             <i class="fas fa-check read-icon"></i>
           
@@ -317,13 +317,13 @@
  
   
     
-    <li data-nav-id="/vi/3-connect-rds/3-launch-ec2/" title="Khởi chạy RDS Instance" class="dd-item 
+    <li data-nav-id="/vi/3-connect-rds/3-launch-ec2/" title="Tạo EC2 Instance" class="dd-item 
         
         
         
         ">
       <a href="/vi/3-connect-rds/3-launch-ec2/">
-          <b>3.3 </b>Khởi chạy RDS Instance
+          <b>3.3 </b>Tạo EC2 Instance
           
             <i class="fas fa-check read-icon"></i>
           
@@ -345,13 +345,13 @@
  
   
     
-    <li data-nav-id="/vi/3-connect-rds/4-create-lambda-function/" title="Khởi chạy RDS Instance" class="dd-item 
+    <li data-nav-id="/vi/3-connect-rds/4-create-lambda-function/" title="Khởi tạo hàm lambda" class="dd-item 
         
         
         
         ">
       <a href="/vi/3-connect-rds/4-create-lambda-function/">
-          <b>3.4 </b>Khởi chạy RDS Instance
+          <b>3.4 </b>Khởi tạo hàm lambda
           
             <i class="fas fa-check read-icon"></i>
           
@@ -373,13 +373,13 @@
  
   
     
-    <li data-nav-id="/vi/3-connect-rds/5-connect-lambda-rds/" title="Khởi chạy RDS Instance" class="dd-item 
+    <li data-nav-id="/vi/3-connect-rds/5-connect-lambda-rds/" title="Kết nối Lambda với RDS Instance" class="dd-item 
         
         
         
         ">
       <a href="/vi/3-connect-rds/5-connect-lambda-rds/">
-          <b>3.5 </b>Khởi chạy RDS Instance
+          <b>3.5 </b>Kết nối Lambda với RDS Instance
           
             <i class="fas fa-check read-icon"></i>
           
@@ -695,52 +695,44 @@
 	<h3 id="cấu-hình-security-group">Cấu hình Security Group</h3>
 <p><strong>Cấu hình Security Group cho EC2 Instance</strong></p>
 <ol>
-<li>Trong giao diện quản lý VPC, hãy chọn tùy chọn bên trái.</li>
-</ol>
+<li>Trong giao diện quản lý VPC, hãy chọn tùy chọn bên trái.
 <ul>
 <li>Chọn <strong>Security Group</strong></li>
 <li>Chọn <strong>Create Security Group</strong></li>
 </ul>
+</li>
+</ol>
 <p><img alt="Security Group" src="/images/2/2_2/1.png?width=90pc"></p>
-<p>Cấu hình cho Security Group</p>
 <ul>
-<li>
-<p>Trong phần <strong>Basic details</strong></p>
-</li>
-<li>
-<p>Đặt tên cho Security group: <code>FCJ-Lab-sg-public</code></p>
-</li>
-<li>
-<p>Mô tả Security group: <code>Security group for FCJ Lab</code></p>
-</li>
-<li>
-<p>VPC: <strong>FCJ-Lab-vpc</strong></p>
+<li>Cấu hình cho Security Group</li>
+<li>Trong phần <strong>Basic details</strong>
+<ul>
+<li>Đặt tên cho Security group: <code>FCJ-Lab-sg-public</code></li>
+<li>Mô tả Security group: <code>Security group for FCJ Lab</code></li>
+<li>VPC: <strong>FCJ-Lab-vpc</strong></li>
+</ul>
 </li>
 </ul>
 <p><img alt="Basic details" src="/images/2/2_2/2.png?width=90pc"></p>
 <ol start="2">
-<li>Trong phần Inbound rules</li>
-</ol>
-<p>Chúng ta sẽ thêm các quy tắc sau:</p>
+<li>Trong phần Inbound rules
+Chúng ta sẽ thêm các quy tắc sau:
 <ul>
 <li>Nhập <strong>SSH</strong> source <strong>Anywhere-IPv4</strong></li>
 <li>Nhập <strong>HTTP</strong> source <strong>Anywhere-IPv4</strong></li>
 <li>Nhập <strong>HTTPS</strong> source <strong>Anywhere-IPv4</strong></li>
 <li>Nhập <strong>Custom TCP</strong>, port range <strong>3000</strong>, source <strong>Anywhere-IPv4</strong></li>
 </ul>
+</li>
+</ol>
 <p><img alt="Inbound rules" src="/images/2/2_2/3.png?width=90pc"></p>
 <ul>
-<li>
-<p>Trong phần Outbound Rule, chúng ta sẽ để mặc định</p>
-</li>
-<li>
-<p>Nhấp vào <strong>Create security group</strong></p>
-</li>
+<li>Trong phần Outbound Rule, chúng ta sẽ để mặc định</li>
+<li>Nhấp vào <strong>Create security group</strong></li>
 </ul>
 <p><strong>Cấu hình Security Group cho database instance</strong></p>
 <ol start="3">
-<li>Tương tự như bước tạo security group cho EC2 ở trên. Cấu hình cho Security Group DB</li>
-</ol>
+<li>Tương tự như bước tạo security group cho EC2 ở trên. Cấu hình cho Security Group DB
 <ul>
 <li>Trong phần Basic details
 <ul>
@@ -753,10 +745,12 @@
 <ul>
 <li>Chọn Type <strong>MYSQL/Aurora</strong></li>
 <li>Source chọn <strong>FCJ-Lab-sg</strong></li>
-</ul>
-</li>
 <li>Trong phần <strong>Outbound</strong>. Chúng ta để nguyên mặc định</li>
 </ul>
+</li>
+</ul>
+</li>
+</ol>
 <p><img alt="Inbound rules" src="/images/2/2_2/4.png?width=90pc"></p>
 <ul>
 <li>Chọn <strong>Create security group</strong></li>
@@ -1064,7 +1058,7 @@
 			<a class="nav nav-prev" href="/vi/2-prepareration/1-configure-vpc/" title="Cấu hình VPC"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/vi/2-prepareration/3-create-role/" title="Cấu hình Role cho Lambda" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/vi/2-prepareration/3-create-role/" title="Tạo Role cho Lambda" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1074,19 +1068,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1732176783"></script>
-    <script src="/js/perfect-scrollbar.min.js?1732176783"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1732176783"></script>
-    <script src="/js/jquery.sticky.js?1732176783"></script>
-    <script src="/js/featherlight.min.js?1732176783"></script>
-    <script src="/js/highlight.pack.js?1732176783"></script>
+    <script src="/js/clipboard.min.js?1732190048"></script>
+    <script src="/js/perfect-scrollbar.min.js?1732190048"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1732190048"></script>
+    <script src="/js/jquery.sticky.js?1732190048"></script>
+    <script src="/js/featherlight.min.js?1732190048"></script>
+    <script src="/js/highlight.pack.js?1732190048"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1732176783"></script>
-    <script src="/js/learn.js?1732176783"></script>
-    <script src="/js/hugo-learn.js?1732176783"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1732190048"></script>
+    <script src="/js/learn.js?1732190048"></script>
+    <script src="/js/hugo-learn.js?1732190048"></script>
 
-    <link href="/mermaid/mermaid.css?1732176783" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1732176783"></script>
+    <link href="/mermaid/mermaid.css?1732190048" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1732190048"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
