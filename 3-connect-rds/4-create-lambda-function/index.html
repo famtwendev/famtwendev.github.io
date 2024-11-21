@@ -12,21 +12,21 @@
     <title>Create lambda function :: Deploy ShareNote Application on Auto Scaling Group</title>
 
     
-    <link href="/css/nucleus.css?1732206975" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1732206975" rel="stylesheet">
-    <link href="/css/hybrid.css?1732206975" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1732206975" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1732206975" rel="stylesheet">
-    <link href="/css/auto-complete.css?1732206975" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1732206975" rel="stylesheet">
-    <link href="/css/theme.css?1732206975" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1732206975" rel="stylesheet">
+    <link href="/css/nucleus.css?1732210829" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1732210829" rel="stylesheet">
+    <link href="/css/hybrid.css?1732210829" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1732210829" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1732210829" rel="stylesheet">
+    <link href="/css/auto-complete.css?1732210829" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1732210829" rel="stylesheet">
+    <link href="/css/theme.css?1732210829" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1732210829" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1732206975" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1732210829" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1732206975"></script>
+    <script src="/js/jquery-3.3.1.min.js?1732210829"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1732206975"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1732206975"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1732210829"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1732210829"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1732206975"></script>
+<script type="text/javascript" src="/js/search.js?1732210829"></script>
 
     
   </div>
@@ -828,8 +828,63 @@
 
 
 
-	<h4 id="tạo-cơ-sở-dữ-liệu">Tạo cơ sở dữ liệu</h4>
-<p>
+	<h4 id="create-lambda-function">Create lambda function</h4>
+<ol>
+<li>In AWS Console interface.</li>
+</ol>
+<ul>
+<li>Search and select Lambda
+<img alt="Lambda" src="/images/3/3_4/1.png?width=90pc"></li>
+<li>Create lambda function
+<img alt="Create lambd" src="/images/3/3_4/2.png?width=90pc"></li>
+</ul>
+<ol start="2">
+<li>In the Create function section</li>
+</ol>
+<ul>
+<li>
+<p>Select <strong>Author from scratch</strong></p>
+</li>
+<li>
+<p>In the Basic information section - Function name: <code>ChangeDataRDS</code> - Runtime: <strong>Node.js 20.x</strong>
+<img alt="Basic information" src="/images/3/3_4/3.png?width=90pc"></p>
+</li>
+<li>
+<p>Select Role: <strong>RoleLambdatochangedataRDS</strong>
+<img alt="Choose Role" src="/images/3/3_4/4.png?width=90pc"></p>
+</li>
+</ul>
+<ol start="3">
+<li>
+<p>Check <strong>Enble VPC</strong></p>
+<ul>
+<li>Select the information that has been initialized before:
+<ul>
+<li>VPC <strong>FCJ-Lab-vpc</strong></li>
+<li>Select public subnet: <strong>FCJ-Lab-subnet-private2-ap-southeast-1b</strong> &amp; <strong>FCJ-Lab-subnet-private1-ap-southeast-1a</strong></li>
+</ul>
+</li>
+<li>Select <strong>Select existing security group</strong></li>
+<li>Select <strong>FCJ-Lab-sg-public</strong> &amp; <strong>FCJ-Lab-sg-db</strong>
+<img alt="Enble VPC" src="/images/3/3_4/5.png?width=90pc"></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>After setting up, finally select <strong>Create</strong>
+<img alt="Create" src="/images/3/3_4/6.png?width=90pc"></li>
+</ul>
+<ol start="4">
+<li>Download the Lambda function file with the following functions:
+<ul>
+<li>Add new user &amp; Delete user in the database.</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>Download the .zip file containing the lambda function.</li>
+</ul>
+
 <section class="attachments orange">
 	<label>
 		<i class="fas fa-paperclip" aria-hidden="true"></i>
@@ -857,8 +912,42 @@
 </section>
 
 
-<a href="/3-connect-rds/4-create-lambda-function/_index.files/ChangeDataRDS.zip">Download Lambda Function</a>
-<!-- raw HTML omitted -->Download Lambda Function<!-- raw HTML omitted --></p>
+<ol start="5">
+<li>Select <strong>Upload form</strong>
+<img alt="Upload Zip" src="/images/3/3_4/7.png?width=90pc"></li>
+</ol>
+<ul>
+<li>Select <strong>Upload</strong></li>
+<li>Select Zip file here
+<img alt="Choose Zip" src="/images/3/3_4/8.png?width=90pc"></li>
+</ul>
+<p>Uploaded .zip file successfully
+<img alt="Upload Zip success" src="/images/3/3_4/9.png?width=90pc"></p>
+<ol start="6">
+<li>At the <strong>Configuration</strong> tab in the lambda</li>
+</ol>
+<ul>
+<li>
+<p>Select <strong>Environment variables</strong></p>
+</li>
+<li>
+<p>Click <strong>Edit</strong>
+<img alt="Edit Environment variables" src="/images/3/3_4/10.png?width=90pc"></p>
+</li>
+<li>
+<p>Select <strong>Add environment variable</strong>:</p>
+</li>
+</ul>
+<pre tabindex="0"><code>RDS_LAMBDA_HOSTNAME: endpoint_your_rds_instance
+RDS_LAMBDA_USERNAME: admin
+RDS_LAMBDA_PASSWORD: admin2024
+RDS_LAMBDA_PORT: 3306
+JWT_SECRET: 0bac010eca699c25c8f62ba86e319c2305beb94641b859c32518cb854addb5f4
+</code></pre><ul>
+<li>Select <strong>Save</strong> to save the environment.
+<img alt="Edit Environment variables" src="/images/3/3_4/11.png?width=90pc">
+<img alt="Edit Environment variables" src="/images/3/3_4/12.png?width=90pc"></li>
+</ul>
 
 
 
@@ -1239,19 +1328,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1732206975"></script>
-    <script src="/js/perfect-scrollbar.min.js?1732206975"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1732206975"></script>
-    <script src="/js/jquery.sticky.js?1732206975"></script>
-    <script src="/js/featherlight.min.js?1732206975"></script>
-    <script src="/js/highlight.pack.js?1732206975"></script>
+    <script src="/js/clipboard.min.js?1732210829"></script>
+    <script src="/js/perfect-scrollbar.min.js?1732210829"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1732210829"></script>
+    <script src="/js/jquery.sticky.js?1732210829"></script>
+    <script src="/js/featherlight.min.js?1732210829"></script>
+    <script src="/js/highlight.pack.js?1732210829"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1732206975"></script>
-    <script src="/js/learn.js?1732206975"></script>
-    <script src="/js/hugo-learn.js?1732206975"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1732210829"></script>
+    <script src="/js/learn.js?1732210829"></script>
+    <script src="/js/hugo-learn.js?1732210829"></script>
 
-    <link href="/mermaid/mermaid.css?1732206975" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1732206975"></script>
+    <link href="/mermaid/mermaid.css?1732210829" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1732210829"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

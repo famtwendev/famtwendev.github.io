@@ -12,21 +12,21 @@
     <title>Khởi tạo hàm lambda :: Triển khai Ứng dụng ShareNote với Auto Scaling Group</title>
 
     
-    <link href="/css/nucleus.css?1732206976" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1732206976" rel="stylesheet">
-    <link href="/css/hybrid.css?1732206976" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1732206976" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1732206976" rel="stylesheet">
-    <link href="/css/auto-complete.css?1732206976" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1732206976" rel="stylesheet">
-    <link href="/css/theme.css?1732206976" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1732206976" rel="stylesheet">
+    <link href="/css/nucleus.css?1732210830" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1732210830" rel="stylesheet">
+    <link href="/css/hybrid.css?1732210830" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1732210830" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1732210830" rel="stylesheet">
+    <link href="/css/auto-complete.css?1732210830" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1732210830" rel="stylesheet">
+    <link href="/css/theme.css?1732210830" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1732210830" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1732206976" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1732210830" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1732206976"></script>
+    <script src="/js/jquery-3.3.1.min.js?1732210830"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1732206976"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1732206976"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1732210830"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1732210830"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1732206976"></script>
+<script type="text/javascript" src="/js/search.js?1732210830"></script>
 
     
   </div>
@@ -828,8 +828,62 @@
 
 
 
-	<h4 id="tổng-quan-rds">Tổng quan RDS</h4>
-<p>
+	<h4 id="khởi-tạo-hàm-lambda">Khởi tạo hàm lambda</h4>
+<ol>
+<li>Ở giao diện AWS Console.</li>
+</ol>
+<ul>
+<li>Tìm kiếm và chọn Lambda
+<img alt="Lambda" src="/images/3/3_4/1.png?width=90pc"></li>
+<li>Tạo lambda function
+<img alt="Tạo lambd" src="/images/3/3_4/2.png?width=90pc"></li>
+</ul>
+<ol start="2">
+<li>Ở phần Create function</li>
+</ol>
+<ul>
+<li>
+<p>Chọn <strong>Author from scratch</strong></p>
+</li>
+<li>
+<p>Ở phần Basic information - Function name: <code>ChangeDataRDS</code> - Runtime: <strong>Node.js 20.x</strong>
+<img alt="Basic information" src="/images/3/3_4/3.png?width=90pc"></p>
+</li>
+<li>
+<p>Chọn Role: <strong>RoleLambdatochangedataRDS</strong>
+<img alt="Chọn Role" src="/images/3/3_4/4.png?width=90pc"></p>
+</li>
+</ul>
+<ol start="3">
+<li>Tích chọn <strong>Enble VPC</strong>
+<ul>
+<li>Chọn các thông tin đã khởi tạo từ trước:
+<ul>
+<li>VPC <strong>FCJ-Lab-vpc</strong></li>
+<li>Chọn subnet public: <strong>FCJ-Lab-subnet-private2-ap-southeast-1b</strong> &amp; <strong>FCJ-Lab-subnet-private1-ap-southeast-1a</strong></li>
+</ul>
+</li>
+<li>Chọn <strong>Select existing security group</strong></li>
+<li>Chọn <strong>FCJ-Lab-sg-public</strong> &amp; <strong>FCJ-Lab-sg-db</strong>
+<img alt="Enble VPC" src="/images/3/3_4/5.png?width=90pc"></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>Sau khi thiết lập, cuối cùng chọn <strong>Create</strong>
+<img alt="Create" src="/images/3/3_4/6.png?width=90pc"></li>
+</ul>
+<ol start="4">
+<li>Download file Lambda function với chức năng:
+<ul>
+<li>Thêm mới user &amp; Xóa user trong database.</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>Tải xuống file .zip chứa lambda function.</li>
+</ul>
+
 <section class="attachments orange">
 	<label>
 		<i class="fas fa-paperclip" aria-hidden="true"></i>
@@ -857,8 +911,39 @@
 </section>
 
 
-<a href="/3-connect-rds/4-create-lambda-function/_index.files/ChangeDataRDS.zip">Download Lambda Function</a>
-<!-- raw HTML omitted -->Download Lambda Function<!-- raw HTML omitted --></p>
+<ol start="5">
+<li>Chọn <strong>Upload form</strong>
+<img alt="Upload Zip" src="/images/3/3_4/7.png?width=90pc"></li>
+</ol>
+<ul>
+<li>Chọn <strong>Upload</strong></li>
+<li>Chọn file Zip tại đây
+<img alt="Choose Zip" src="/images/3/3_4/8.png?width=90pc"></li>
+</ul>
+<p>Upload file .zip thành công
+<img alt="Upload Zip success" src="/images/3/3_4/9.png?width=90pc"></p>
+<ol start="6">
+<li>Tại tab <strong>Configuration</strong> trong lambda
+<ul>
+<li>Chọn <strong>Environment variables</strong></li>
+<li>Nhấn <strong>Edit</strong>
+<img alt="Edit Environment variables" src="/images/3/3_4/10.png?width=90pc"></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>Chọn <strong>Add environment variable</strong>:</li>
+</ul>
+<pre tabindex="0"><code>RDS_LAMBDA_HOSTNAME: endpoint_your_rds_instance
+RDS_LAMBDA_USERNAME: admin
+RDS_LAMBDA_PASSWORD: admin2024
+RDS_LAMBDA_PORT: 3306
+JWT_SECRET: 0bac010eca699c25c8f62ba86e319c2305beb94641b859c32518cb854addb5f4
+</code></pre><ul>
+<li>Chọn <strong>Save</strong> để lưu biến môi trường.
+<img alt="Edit Environment variables" src="/images/3/3_4/11.png?width=90pc">
+<img alt="Edit Environment variables" src="/images/3/3_4/12.png?width=90pc"></li>
+</ul>
 
 
 
@@ -1239,19 +1324,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1732206976"></script>
-    <script src="/js/perfect-scrollbar.min.js?1732206976"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1732206976"></script>
-    <script src="/js/jquery.sticky.js?1732206976"></script>
-    <script src="/js/featherlight.min.js?1732206976"></script>
-    <script src="/js/highlight.pack.js?1732206976"></script>
+    <script src="/js/clipboard.min.js?1732210830"></script>
+    <script src="/js/perfect-scrollbar.min.js?1732210830"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1732210830"></script>
+    <script src="/js/jquery.sticky.js?1732210830"></script>
+    <script src="/js/featherlight.min.js?1732210830"></script>
+    <script src="/js/highlight.pack.js?1732210830"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1732206976"></script>
-    <script src="/js/learn.js?1732206976"></script>
-    <script src="/js/hugo-learn.js?1732206976"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1732210830"></script>
+    <script src="/js/learn.js?1732210830"></script>
+    <script src="/js/hugo-learn.js?1732210830"></script>
 
-    <link href="/mermaid/mermaid.css?1732206976" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1732206976"></script>
+    <link href="/mermaid/mermaid.css?1732210830" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1732210830"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

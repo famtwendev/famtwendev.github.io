@@ -12,21 +12,21 @@
     <title>Connect RDS Instance with Lambda :: Deploy ShareNote Application on Auto Scaling Group</title>
 
     
-    <link href="/css/nucleus.css?1732206975" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1732206975" rel="stylesheet">
-    <link href="/css/hybrid.css?1732206975" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1732206975" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1732206975" rel="stylesheet">
-    <link href="/css/auto-complete.css?1732206975" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1732206975" rel="stylesheet">
-    <link href="/css/theme.css?1732206975" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1732206975" rel="stylesheet">
+    <link href="/css/nucleus.css?1732210829" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1732210829" rel="stylesheet">
+    <link href="/css/hybrid.css?1732210829" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1732210829" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1732210829" rel="stylesheet">
+    <link href="/css/auto-complete.css?1732210829" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1732210829" rel="stylesheet">
+    <link href="/css/theme.css?1732210829" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1732210829" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1732206975" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1732210829" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1732206975"></script>
+    <script src="/js/jquery-3.3.1.min.js?1732210829"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1732206975"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1732206975"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1732210829"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1732210829"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1732206975"></script>
+<script type="text/javascript" src="/js/search.js?1732210829"></script>
 
     
   </div>
@@ -828,7 +828,47 @@
 
 
 
-	<h4 id="tạo-cơ-sở-dữ-liệu">Tạo cơ sở dữ liệu</h4>
+	<h4 id="connect-lambda-to-rds-instance">Connect Lambda to RDS Instance</h4>
+<ol>
+<li>At the <strong>Configuration</strong> tab</li>
+</ol>
+<ul>
+<li>Select <strong>RDS databases</strong></li>
+<li>Select <strong>Connect to RDS database</strong>
+<img alt="RDS databases" src="/images/3/3_5/1.png?width=90pc"></li>
+</ul>
+<ol start="2">
+<li>Inside <strong>RDS database</strong></li>
+</ol>
+<ul>
+<li>Select <strong>Use an exiting database</strong></li>
+<li>Select RDS instance: <strong>fcj-database-instance</strong>
+<img alt="RDS instance" src="/images/3/3_5/2.png?width=90pc"></li>
+<li>Then select <strong>Create</strong>
+<img alt="Create connect" src="/images/3/3_5/3.png?width=90pc"></li>
+</ul>
+<ol start="3">
+<li>Test event action: Create new event
+Event name: <code>CREATE_USER</code>
+Event JSON:</li>
+</ol>
+<pre tabindex="0"><code>{
+&#34;method&#34;: &#34;POST&#34;,
+&#34;name&#34;: &#34;John Doe&#34;,
+&#34;e-mail&#34;: &#34;johndoe@example.com&#34;,
+&#34;password&#34;: &#34;hashedpassword123&#34;,
+&#34;image&#34;: &#34;/avatar.png&#34;,
+&#34;isAdmin&#34;: 1,
+&#34;createdAt&#34;: &#34;2024-06-05 05:50&#34;,
+&#34;updatedAt&#34;: &#34;2024-10-05 05:50&#34;
+}
+</code></pre><p><img alt="Create new event" src="/images/3/3_5/4.png?width=90pc"></p>
+<p>After testing CREATE_USERS
+<img alt="success" src="/images/3/3_5/5.png?width=90pc"></p>
+<ol start="4">
+<li>Test again using EC2
+<img alt="Check Ec2" src="/images/3/3_5/6.png?width=90pc"></li>
+</ol>
 
 
 
@@ -1209,19 +1249,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1732206975"></script>
-    <script src="/js/perfect-scrollbar.min.js?1732206975"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1732206975"></script>
-    <script src="/js/jquery.sticky.js?1732206975"></script>
-    <script src="/js/featherlight.min.js?1732206975"></script>
-    <script src="/js/highlight.pack.js?1732206975"></script>
+    <script src="/js/clipboard.min.js?1732210829"></script>
+    <script src="/js/perfect-scrollbar.min.js?1732210829"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1732210829"></script>
+    <script src="/js/jquery.sticky.js?1732210829"></script>
+    <script src="/js/featherlight.min.js?1732210829"></script>
+    <script src="/js/highlight.pack.js?1732210829"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1732206975"></script>
-    <script src="/js/learn.js?1732206975"></script>
-    <script src="/js/hugo-learn.js?1732206975"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1732210829"></script>
+    <script src="/js/learn.js?1732210829"></script>
+    <script src="/js/hugo-learn.js?1732210829"></script>
 
-    <link href="/mermaid/mermaid.css?1732206975" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1732206975"></script>
+    <link href="/mermaid/mermaid.css?1732210829" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1732210829"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

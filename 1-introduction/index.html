@@ -12,21 +12,21 @@
     <title>Introduction :: Deploy ShareNote Application on Auto Scaling Group</title>
 
     
-    <link href="/css/nucleus.css?1732206975" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1732206975" rel="stylesheet">
-    <link href="/css/hybrid.css?1732206975" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1732206975" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1732206975" rel="stylesheet">
-    <link href="/css/auto-complete.css?1732206975" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1732206975" rel="stylesheet">
-    <link href="/css/theme.css?1732206975" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1732206975" rel="stylesheet">
+    <link href="/css/nucleus.css?1732210829" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1732210829" rel="stylesheet">
+    <link href="/css/hybrid.css?1732210829" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1732210829" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1732210829" rel="stylesheet">
+    <link href="/css/auto-complete.css?1732210829" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1732210829" rel="stylesheet">
+    <link href="/css/theme.css?1732210829" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1732210829" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1732206975" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1732210829" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1732206975"></script>
+    <script src="/js/jquery-3.3.1.min.js?1732210829"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1732206975"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1732206975"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1732210829"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1732210829"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1732206975"></script>
+<script type="text/javascript" src="/js/search.js?1732210829"></script>
 
     
   </div>
@@ -842,45 +842,49 @@
 <ul>
 <li>
 <p><strong>Amazon Relational Database Service (Amazon RDS)</strong></p>
-<pre><code>- Amazon Relational Database Service is a managed service that allows you to deploy and manage relational databases on AWS.
-- Amazon RDS is an online transaction processing (OLTP) database.
-- The primary use case is transactional databases (rather than analytical databases).
-- It is best suited for structured and relational data storage requirements.
-- It is intended to be an easy alternative to traditional on-premises instances of the same database.
-- Automatic backups and patching are performed during customer-defined maintenance windows.
-- Scaling, replication, and availability are a click away.
-</code></pre>
+<ul>
+<li>Amazon Relational Database Service is a managed service that allows you to deploy and manage relational databases on AWS.</li>
+<li>Amazon RDS is an online transaction processing (OLTP) database.</li>
+<li>The primary use case is transactional databases (rather than analytical databases).</li>
+<li>It is best suited for structured and relational data storage requirements.</li>
+<li>It is intended to be an easy alternative to traditional on-premises instances of the same database.</li>
+<li>Automatic backups and patching are performed during customer-defined maintenance windows.</li>
+<li>Scaling, replication, and availability are a click away.</li>
+</ul>
 </li>
 <li>
 <p><strong>AWS Lambda</strong></p>
-<pre><code>- What it does: Lets you run code without managing servers. Lambda automatically scales to handle thousands of requests per second.
-
-- What it is: Run serverless functions, such as processing API requests, interacting with RDS databases, without maintaining a server.
-</code></pre>
+<ul>
+<li>What it does: Lets you run code without managing servers. Lambda automatically scales to handle thousands of requests per second.</li>
+<li>What it is: Run serverless functions, such as processing API requests, interacting with RDS databases, without maintaining a server.</li>
+</ul>
 </li>
 <li>
 <p><strong>Amazon API Gateway</strong></p>
-<pre><code>- What it does: Provides an API to connect applications to back-end services like Lambda.
-- What it does: Create and manage RESTful or WebSocket APIs that allow users or applications to call Lambda functions over HTTP/HTTPS. API Gateway provides security, monitoring, and access control.
-</code></pre>
+<ul>
+<li>What it does: Provides an API to connect applications to back-end services like Lambda.</li>
+<li>What it does: Create and manage RESTful or WebSocket APIs that allow users or applications to call Lambda functions over HTTP/HTTPS. API Gateway provides security, monitoring, and access control.</li>
+</ul>
 </li>
 <li>
 <p><strong>Amazon Cognito</strong></p>
-<pre><code>- What it does: Provides user authentication, login management, and access rights for mobile and web applications.
-- What it does: Manage users and authenticate users in applications, protect APIs by integrating authentication with API Gateway, ensuring only logged-in users can access resources.
-</code></pre>
+<ul>
+<li>What it does: Provides user authentication, login management, and access rights for mobile and web applications.</li>
+<li>What it does: Manage users and authenticate users in applications, protect APIs by integrating authentication with API Gateway, ensuring only logged-in users can access resources.</li>
+</ul>
 </li>
 </ul>
 <h4 id="aws-service-deployment-and-configuration-steps">AWS Service Deployment and Configuration Steps:</h4>
 <p>You will practice creating AWS services and connecting them together, thereby creating a complete system. You will understand the deployment process, from creating AWS services to integrating them into a seamless operating system.</p>
-<pre><code>- Create VPC and security group
-- Create and configure Amazon RDS for database.
-- Create EC2 to connect and add data to RDS instance
-- Build Lambda functions and connect to RDS.
-- Create an API Gateway and integrate with Lambda to handle requests from users.
-- Create a user pool and authenticate with Amazon Cognito.
-- Configure API Gateway security via Cognito, ensuring only authenticated users can call the API.
-</code></pre>
+<ul>
+<li>Create VPC and security group</li>
+<li>Create and configure Amazon RDS for database.</li>
+<li>Create EC2 to connect and add data to RDS instance</li>
+<li>Build Lambda functions and connect to RDS.</li>
+<li>Create an API Gateway and integrate with Lambda to handle requests from users.</li>
+<li>Create a user pool and authenticate with Amazon Cognito.</li>
+<li>Configure API Gateway security via Cognito, ensuring only authenticated users can call the API.</li>
+</ul>
 
 
 
@@ -1254,19 +1258,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1732206975"></script>
-    <script src="/js/perfect-scrollbar.min.js?1732206975"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1732206975"></script>
-    <script src="/js/jquery.sticky.js?1732206975"></script>
-    <script src="/js/featherlight.min.js?1732206975"></script>
-    <script src="/js/highlight.pack.js?1732206975"></script>
+    <script src="/js/clipboard.min.js?1732210829"></script>
+    <script src="/js/perfect-scrollbar.min.js?1732210829"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1732210829"></script>
+    <script src="/js/jquery.sticky.js?1732210829"></script>
+    <script src="/js/featherlight.min.js?1732210829"></script>
+    <script src="/js/highlight.pack.js?1732210829"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1732206975"></script>
-    <script src="/js/learn.js?1732206975"></script>
-    <script src="/js/hugo-learn.js?1732206975"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1732210829"></script>
+    <script src="/js/learn.js?1732210829"></script>
+    <script src="/js/hugo-learn.js?1732210829"></script>
 
-    <link href="/mermaid/mermaid.css?1732206975" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1732206975"></script>
+    <link href="/mermaid/mermaid.css?1732210829" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1732210829"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
