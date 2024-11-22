@@ -12,21 +12,21 @@
     <title>Kiểm tra Kết quả :: Triển khai Ứng dụng ShareNote với Auto Scaling Group</title>
 
     
-    <link href="/css/nucleus.css?1732210830" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1732210830" rel="stylesheet">
-    <link href="/css/hybrid.css?1732210830" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1732210830" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1732210830" rel="stylesheet">
-    <link href="/css/auto-complete.css?1732210830" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1732210830" rel="stylesheet">
-    <link href="/css/theme.css?1732210830" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1732210830" rel="stylesheet">
+    <link href="/css/nucleus.css?1732257436" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1732257436" rel="stylesheet">
+    <link href="/css/hybrid.css?1732257436" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1732257436" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1732257436" rel="stylesheet">
+    <link href="/css/auto-complete.css?1732257436" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1732257436" rel="stylesheet">
+    <link href="/css/theme.css?1732257436" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1732257436" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1732210830" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1732257436" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1732210830"></script>
+    <script src="/js/jquery-3.3.1.min.js?1732257436"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1732210830"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1732210830"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1732257436"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1732257436"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1732210830"></script>
+<script type="text/javascript" src="/js/search.js?1732257436"></script>
 
     
   </div>
@@ -439,13 +439,13 @@
  
   
     
-    <li data-nav-id="/vi/4-configure-apigateway/1-create-method-api/" title="Tạo phương thức API" class="dd-item 
+    <li data-nav-id="/vi/4-configure-apigateway/1-create-rest-api/" title="Triển khai API Gateway" class="dd-item 
         
         
         
         ">
-      <a href="/vi/4-configure-apigateway/1-create-method-api/">
-          <b>4.1 </b>Tạo phương thức API
+      <a href="/vi/4-configure-apigateway/1-create-rest-api/">
+          <b>4.1 </b>Triển khai API Gateway
           
             <i class="fas fa-check read-icon"></i>
           
@@ -790,7 +790,15 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#kiểm-tra-hoạt-động">Kiểm tra hoạt động</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -814,7 +822,141 @@
 
 
 
-	
+	<h3 id="kiểm-tra-hoạt-động">Kiểm tra hoạt động</h3>
+<p><strong>//Syntax</strong></p>
+<pre tabindex="0"><code>https://&lt;your user pool domain&gt;/authorize?client_id=&lt;your app client ID&gt;&amp;response_type=&lt;code/token&gt;&amp;scope=&lt;scopes to request&gt;&amp;redirect_uri=&lt;your callback URL&gt;
+</code></pre><p><strong>Hoặc syntax sau:</strong></p>
+<pre tabindex="0"><code>https://&lt;your app client ID&gt;/authorize?client_id==&lt;your app client ID&gt;&amp;response_type=token&amp;scope=openid&amp;redirect_uri=https://google.com
+</code></pre><ol>
+<li>
+<p>Copy <strong>Cognito domain</strong>
+<img alt="Copy Cognito domain" src="/images/6/1.png?width=90pc"></p>
+</li>
+<li>
+<p>Copy <strong>Client ID</strong>
+<img alt="Copy Client ID" src="/images/6/2.png?width=90pc"></p>
+</li>
+<li>
+<p>Chỉnh sửa ghép vào syntax ở trên để truy cập vào cognito qua đường dẫn.
+Dùng <strong>username và password</strong> của user đã tạo trong cognito để đăng nhập vào.
+<img alt="Truy cập Cognito" src="/images/6/3.png?width=90pc"></p>
+</li>
+<li>
+<p>Nhập thông tin để thay đổi mật khẩu:
+<img alt="Truy cập Cognito" src="/images/6/4.png?width=90pc"></p>
+<p>Sau đó bạn rollback về url <strong><a href="https://google.com">https://google.com</a> kèm với thông tin token</strong>.
+<img alt="Truy cập Cognito" src="/images/6/5.png?width=90pc"></p>
+</li>
+<li>
+<p>Ta copy ra trình soạn thảo để lấy token
+<img alt="Copy token" src="/images/6/6.png?width=90pc"></p>
+</li>
+<li>
+<p>Tìm hiểu nội dung Token
+<img alt="data token" src="/images/6/7.png?width=90pc"></p>
+</li>
+<li>
+<p>Trở lại API Gateway</p>
+</li>
+</ol>
+<ul>
+<li>Vào API Gateway đã tạo ở phần <strong>Triển khai API Gateway</strong></li>
+<li>Chọn <strong>Create an authorizer</strong>
+<img alt="Create an authorizer" src="/images/6/8.png?width=90pc"></li>
+</ul>
+<ol start="8">
+<li>Thiết lập các thông tin cho xác thực cognito
+<ul>
+<li>Authorizer name: <code>coginito-authorizer</code></li>
+<li>Authorizer type: <strong>Cognito</strong></li>
+<li>Cognito user pool: <strong>test-lamda-pool-01</strong>
+<img alt="coginito-authorizer" src="/images/6/9.png?width=90pc"></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><strong>Create authorizer</strong>
+<img alt="Create authorizer success" src="/images/6/10.png?width=90pc"></li>
+</ul>
+<ol start="9">
+<li>
+<p>Trở lại resource
+Chọn method <strong>POST</strong>. Hiện tại Authorization: <strong>NONE</strong>
+Chọn <strong>Edit</strong>
+<img alt="Choose Edit Method POST" src="/images/6/11.png?width=90pc"></p>
+</li>
+<li>
+<p>Chỉnh sửa thông tin method</p>
+</li>
+</ol>
+<ul>
+<li>Chọn Authorization đã tạo: <strong>cognito-authorizer</strong></li>
+<li>Chọn Save
+<img alt="Edit Method POST" src="/images/6/12.png?width=90pc"></li>
+</ul>
+<ol start="11">
+<li>
+<p><strong>Deploy</strong> để hoạt động method với authorizer vừa gán vào method
+<img alt="Deploy API" src="/images/6/13.png?width=90pc"></p>
+</li>
+<li>
+<p>Khi này ta copy <strong>Invoke URL</strong>
+<img alt="Copy Invoke URL" src="/images/6/14.png?width=90pc"></p>
+</li>
+<li>
+<p>Vào công cụ <strong>postman</strong>.</p>
+</li>
+</ol>
+<p>Ấn vào dấu <strong>+</strong> , để thêm 1 tab mới</p>
+<ul>
+<li>Chọn method <strong>POST</strong></li>
+<li>Nhập <strong>InvokURL</strong> của POST API đã ghi lại từ bước trước</li>
+<li>Nhập vào RequestBody với dạng raw:</li>
+</ul>
+<pre tabindex="0"><code>  {
+  &#34;method&#34;: &#34;GET&#34;
+  }
+</code></pre><ul>
+<li>Ấn nút <strong>Send</strong></li>
+</ul>
+<p>Kết quả: <strong>Ta gặp lỗi xác thực (401 - Unauthorzierd)</strong>
+<img alt="Request API" src="/images/6/15.png?width=90pc"></p>
+<ol start="14">
+<li>
+<p>Ta bôi đen và copy <strong>id_token</strong> đã lấy từ <strong><em>Bước 6</em></strong>
+<img alt="Request API" src="/images/6/16.png?width=90pc"></p>
+</li>
+<li>
+<p>Vào <strong>Postman</strong></p>
+</li>
+</ol>
+<ul>
+<li>Chọn <strong>Authorization</strong></li>
+<li>Loại: <strong>Bearer Token</strong></li>
+<li><strong>Dán id_token</strong> đã copy vào khung token bên phải. Sau đó Gửi lại request</li>
+<li>Kết quả trả về thông tin user
+<img alt="Request API" src="/images/6/17.png?width=90pc"></li>
+</ul>
+<ol start="16">
+<li><strong>Thêm mới</strong> người dùng vào cơ sở dữ liệu</li>
+</ol>
+<ul>
+<li>Kèm với Authorization: token đã dán vào</li>
+<li>Kết quả: Thêm mới thành công
+<img alt="Create New User" src="/images/6/18.png?width=90pc"></li>
+</ul>
+<ol start="17">
+<li>
+<p>Kiểm tra bảng User qua EC2 kết nối với RDS
+<img alt="Check New User with EC2" src="/images/6/19.png?width=90pc"></p>
+</li>
+<li>
+<p>Kiểm tra log trong <strong>Cloud Watch</strong>
+<img alt="Cloud Watch" src="/images/6/20.png?width=90pc"></p>
+<p><img alt="Cloud Watch" src="/images/6/21.png?width=90pc"></p>
+</li>
+</ol>
+
 
 
 
@@ -1190,19 +1332,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1732210830"></script>
-    <script src="/js/perfect-scrollbar.min.js?1732210830"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1732210830"></script>
-    <script src="/js/jquery.sticky.js?1732210830"></script>
-    <script src="/js/featherlight.min.js?1732210830"></script>
-    <script src="/js/highlight.pack.js?1732210830"></script>
+    <script src="/js/clipboard.min.js?1732257436"></script>
+    <script src="/js/perfect-scrollbar.min.js?1732257436"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1732257436"></script>
+    <script src="/js/jquery.sticky.js?1732257436"></script>
+    <script src="/js/featherlight.min.js?1732257436"></script>
+    <script src="/js/highlight.pack.js?1732257436"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1732210830"></script>
-    <script src="/js/learn.js?1732210830"></script>
-    <script src="/js/hugo-learn.js?1732210830"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1732257436"></script>
+    <script src="/js/learn.js?1732257436"></script>
+    <script src="/js/hugo-learn.js?1732257436"></script>
 
-    <link href="/mermaid/mermaid.css?1732210830" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1732210830"></script>
+    <link href="/mermaid/mermaid.css?1732257436" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1732257436"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -12,21 +12,21 @@
     <title>Cấu hình Cognito :: Triển khai Ứng dụng ShareNote với Auto Scaling Group</title>
 
     
-    <link href="/css/nucleus.css?1732210830" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1732210830" rel="stylesheet">
-    <link href="/css/hybrid.css?1732210830" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1732210830" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1732210830" rel="stylesheet">
-    <link href="/css/auto-complete.css?1732210830" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1732210830" rel="stylesheet">
-    <link href="/css/theme.css?1732210830" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1732210830" rel="stylesheet">
+    <link href="/css/nucleus.css?1732257436" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1732257436" rel="stylesheet">
+    <link href="/css/hybrid.css?1732257436" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1732257436" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1732257436" rel="stylesheet">
+    <link href="/css/auto-complete.css?1732257436" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1732257436" rel="stylesheet">
+    <link href="/css/theme.css?1732257436" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1732257436" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1732210830" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1732257436" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1732210830"></script>
+    <script src="/js/jquery-3.3.1.min.js?1732257436"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1732210830"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1732210830"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1732257436"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1732257436"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1732210830"></script>
+<script type="text/javascript" src="/js/search.js?1732257436"></script>
 
     
   </div>
@@ -439,13 +439,13 @@
  
   
     
-    <li data-nav-id="/vi/4-configure-apigateway/1-create-method-api/" title="Tạo phương thức API" class="dd-item 
+    <li data-nav-id="/vi/4-configure-apigateway/1-create-rest-api/" title="Triển khai API Gateway" class="dd-item 
         
         
         
         ">
-      <a href="/vi/4-configure-apigateway/1-create-method-api/">
-          <b>4.1 </b>Tạo phương thức API
+      <a href="/vi/4-configure-apigateway/1-create-rest-api/">
+          <b>4.1 </b>Triển khai API Gateway
           
             <i class="fas fa-check read-icon"></i>
           
@@ -790,7 +790,16 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#tổng-quan-về-aws-cognito">Tổng quan về AWS Cognito</a></li>
+        <li><a href="#nội-dung">Nội dung</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -814,7 +823,53 @@
 
 
 
-	
+	<h3 id="tổng-quan-về-aws-cognito">Tổng quan về AWS Cognito</h3>
+<p><strong>AWS Cognito</strong> là một dịch vụ quản lý danh tính và xác thực người dùng của Amazon Web Services (AWS). Dịch vụ này cho phép bạn tạo ra các ứng dụng web và di động an toàn với khả năng xác thực người dùng, phân quyền, và đăng nhập với nhiều tùy chọn như user account, Social login hoặc đăng nhập qua Identity Provider.</p>
+<h4 id="tính-năng-của-cognito">Tính năng của Cognito</h4>
+<ul>
+<li>Đăng ký &amp; Xác thực người dùng sd username/pw/email hoặc tài khoản mạng xã hội.</li>
+<li>Phân quyền người dùng vào các ứng dụng hoặc tài nguyên</li>
+<li>Xác thực email/số điện thoại.</li>
+<li>Tích hợp với các dịch vụ khác (API Gateway, Lambda) để xây dựng ứng dụng.</li>
+<li>Hỗ trợ cho ứng dụng di động (iOS,Android) thông qua SDK</li>
+<li>Cognito sync: sync data giữa các mobile device với nhau</li>
+<li>Advanced Security: giám sát &amp; phân tích truy cập của user để phát hiện và ngăn chặn truy cập bất thường (optional).</li>
+</ul>
+<h4 id="pricing-của-cognito">Pricing của Cognito</h4>
+<p>Pricing của <strong>Cognito</strong> dựa trên:</p>
+<ul>
+<li>Số lượng Monthly Active User. VD ở Singapore là $0.0055/MAU (càng lên cao càng rẻ)</li>
+<li>User sign in thông qua SAML hoặc OIDC: $0.015/MAU</li>
+<li>Tính năng Advance Security: $0.05/MAU nếu enable</li>
+<li>SMS trong trường hợp gửi message MFA: Tuỳ theo khu vực.</li>
+</ul>
+<h4 id="hạn-chế-của-cognito">Hạn chế của Cognito</h4>
+<ul>
+<li>Số lượng User trên 1 user pool: 40M (contact AWS nếu muốn tăng)</li>
+<li>Số lượng user pool tối đa: default 1,000, max 10,000</li>
+<li>Custom attribute: 50</li>
+<li><strong>Hạn chế về tần suất Admin API call vd:</strong>
+<ul>
+<li>UserCreation: 50 RPS. Tăng thêm 10RPS cho mỗi 1 triệu MAU</li>
+<li>AdminUserRead: 120 RPS. Tăng thêm 40 RPS cho mỗi 1 triệu MAU</li>
+<li>RevokeToken: 120 RPS. Tăng thêm 40 RPS cho mỗi 1 triệu MAU</li>
+<li>UserUpdate: 25 RPS không thể tăng thêm.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Lưu ý về cơ chế verify token của Cognito</strong></p>
+<ul>
+<li><strong>JWT token</strong> do Cognito phát hành thông thường sẽ dùng client side verify (sử dụng Public Key do Cognito cung cấp. <strong><em>Lưu ý AWS không cung cấp private key của Cognito)</em></strong>.</li>
+<li>Việc này đồng nghĩa với việc nếu user logout thì access-token vẫn có hiệu lực cho tới khi expire
+(vd 30 min).</li>
+<li>Nếu hệ thống có nhu cầu revoke access-token đã phát hành khi user có các hành động như change password, log-out thì không thể thực hiện với Cognito. Tất nhiên có thể workaround sử dụng các kỹ thuật Caching/DB.</li>
+</ul>
+<h3 id="nội-dung">Nội dung</h3>
+<ol>
+<li><a href="/vi/5-configure-cognito/1-create-user-pool/">Tạo user pool</a></li>
+<li><a href="/vi/5-configure-cognito/2-create-group-cognito/">Tạo user &amp; group cognito</a></li>
+</ol>
+
 
 
 
@@ -1190,19 +1245,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1732210830"></script>
-    <script src="/js/perfect-scrollbar.min.js?1732210830"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1732210830"></script>
-    <script src="/js/jquery.sticky.js?1732210830"></script>
-    <script src="/js/featherlight.min.js?1732210830"></script>
-    <script src="/js/highlight.pack.js?1732210830"></script>
+    <script src="/js/clipboard.min.js?1732257436"></script>
+    <script src="/js/perfect-scrollbar.min.js?1732257436"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1732257436"></script>
+    <script src="/js/jquery.sticky.js?1732257436"></script>
+    <script src="/js/featherlight.min.js?1732257436"></script>
+    <script src="/js/highlight.pack.js?1732257436"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1732210830"></script>
-    <script src="/js/learn.js?1732210830"></script>
-    <script src="/js/hugo-learn.js?1732210830"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1732257436"></script>
+    <script src="/js/learn.js?1732257436"></script>
+    <script src="/js/hugo-learn.js?1732257436"></script>
 
-    <link href="/mermaid/mermaid.css?1732210830" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1732210830"></script>
+    <link href="/mermaid/mermaid.css?1732257436" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1732257436"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

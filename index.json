@@ -1,10 +1,17 @@
 [
 {
+	"uri": "//localhost:1313/4-configure-apigateway/1-create-rest-api/",
+	"title": "Create REST API",
+	"tags": [],
+	"description": "",
+	"content": "Next, we will set up API Gateway to interact with the Lambda functions created in the previous section:\nCreate REST API In the Console interface: Search for keyword: API Gateway Select REST API Select New API\nAPI name: api-dcj-rds\nDescription – optional: test\nAPI endpoint type: Regional\nSelect Create API REST API successfully created\nNext select Create resource So we have created a new REST API and resources for it. Next, we will create methods that interact with the Lambda function and implement them.\nCreate Method API Select Create Method Method type: POST\nIntegration type: Lambda function\nLambda function: ChangeDataRDS\nSelect Create Method After successfully creating the POST method, next select Deploy API Select Stage: New stage Stage name: changdata Select Deploy Copy the Invoke URL of the created POST method "
+},
+{
 	"uri": "//localhost:1313/5-configure-cognito/1-create-user-pool/",
 	"title": "Create User Pool",
 	"tags": [],
 	"description": "",
-	"content": "Tạo DB Subnet Group Tìm kiếm từ khóa: RDS Chọn phần: Subnet groups Chọn: Create DB subnet group "
+	"content": "Create User pool In the Console interface: Search for keyword: Cognito Select User pools on the left menu Click Create user pool Select User name, Email\nCheck Allow users to sign in with a preferred user name Click Next Select Cognito defaults for Password policy Scroll down, select No MFA for Multi-factor authentication\nSelect Email only for Delivery method Click Next Leave default options Scroll down to the Additional required attributes section: Select name Click Next Select Send email with Cognito Click Next In the SMS configuration section: Select Create a new IAM role IAM role name: cognito-sms-role Click Next Create User pool\nEnter a name for the user pool, for example: test-lamda-pool-01 Select Use the Cognito Hosted UI Domain: Select Use a Cognito domain Enter a domain, for example: https://test-fcj-cloud Create App Client\nSelect Public client Enter a name for the app client, for example: test-change-data-rds At Advanced app client settings\nSelect ALLOW_USER_PASSWORD_AUTH Select ALLOW_USER_SRP_AUTHSRP Select ALLOW_CUSTOM_AUTH Then select Next, Select Create user pool "
 },
 {
 	"uri": "//localhost:1313/1-introduction/",
@@ -35,18 +42,11 @@
 	"content": "Create DB Subnet Group In the AWS console interface, type:\nSearch for the keyword: RDS Select the section: Subnet groups\nSelect: Create DB subnet group Enter the name: fcj-lab-subnet-group-db\nEnter the description: Subnet Group for FCJ Management\nSelect the previously created VPC as FCJ-Lab-vpc Select Availability Zones that were created with the previously created VPC Select 2 Subnet private Check again and select Create Completed creating a Subnet groups "
 },
 {
-	"uri": "//localhost:1313/4-configure-apigateway/1-create-method-api/",
-	"title": "Create method API",
-	"tags": [],
-	"description": "",
-	"content": "Tạo DB Subnet Group Tìm kiếm từ khóa: RDS Chọn phần: Subnet groups Chọn: Create DB subnet group "
-},
-{
 	"uri": "//localhost:1313/4-configure-apigateway/2-check-api-with-postman/",
 	"title": "Check API with Postman",
 	"tags": [],
 	"description": "",
-	"content": "Tạo cơ sở dữ liệu "
+	"content": "Postman is currently one of the most popular tools used in testing APIs.\nAs we know, API is responsible for connecting applications together, having Postman will make working with this API easier. Normally, Postman will be used for REST API. With Postman, we can call Rest API without writing any code.\nDownload Postman.\nTest API with Postman Click on the + ,sign to add a new tab\nSelect POST method Enter InvokURL of the POST API recorded from the previous step Enter RequestBody in raw format: {\r\u0026#34;method\u0026#34;: \u0026#34;GET\u0026#34;\r} Press Send button The returned result is all the processed data of the User table\n"
 },
 {
 	"uri": "//localhost:1313/3-connect-rds/2-start-db/",
@@ -67,7 +67,7 @@
 	"title": "Create User And Group Cognito",
 	"tags": [],
 	"description": "",
-	"content": "Tạo cơ sở dữ liệu "
+	"content": "Create users and groups for Cognito After successfully creating user pool, go to the user pool information: test-lambda-pool-01 In the Users tab. Select Create Users In the user information section Create an account including username, email and password Select Create User Then cognito will send the username and password when the user is registered. Go back to the pool to create a group\nSelect Create group In the group information section Enter the group name, such as: admin\nScroll down and select Create Group After successfully creating the user and group\nGo to Group: admin\nSelect Add user to group Select the user just created Click Add "
 },
 {
 	"uri": "//localhost:1313/2-prepareration/",
@@ -102,7 +102,7 @@
 	"title": "Configure API Gateway",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": "Overview API Gateway An API Gateway service provided by AWS. It provides a simple way to build, manage, and secure RESTful APIs or WebSockets. AWS API Gateway is an important service in the AWS-based microservices architecture and is often used in conjunction with other AWS services such as AWS Lambda, EC2, S3, Amazon DynamoDB.\nWhat features does AWS API Gateway provide? Allows designing and developing RESTful or WebSocket APIs through a web GUI. Coordinates API requests to different systems or services. Authen/Author requests to APIs. Manage and monitor API requests, such as number of requests, response time\u0026hellip;• AWS API Gateway also provides security features, including authentication and authorization of API requests and encrypted secure communication between different systems. Features of API Gateway Is a fully managed service of AWS. Unlimited scalability and High Availablity. Zero idle cost Easy to setup Easy to combine with other services such as CloudWatch, WAF for monitoring \u0026amp; security purposes. When to use API Gateway? API Gateway is suitable for the following problems Micro-service architecture using lambda as backend Backend API for most use cases (web API, IoT) Gateway receives data directly from the client and then stores it in DynamoDB (DB First) Web Socket for realtime communication systems. Cost of API Gateway ? API Gateway PricingAPI Gateway is a service with idle cost = 0. Users only pay for the actual running cost,\nWith REST API Number of requests (eg Singapore region: $ 4.25/1M requests) Data transfer out ($/GB) Caching size in GB/hour With Web socket Message number (for Web socket). Eg $1.15/1M message with 32KB block. Connection minutes: $0.288/1M connection minutes Authentication for API Gateway ? API Gateway provides 2 commonly used direct authentication methods (authorizers):\nCognito Authorizer Directly linked to a Cognito User Pool used as an authorizer. When accessing the API, the client passes the token obtained directly through login with Cognito, API Gateway will check the token and allow access if the token is valid.\nLambda Authorizer (custom authorizer) When using this type of authorizer, you will implement the authen logic yourself on Lambda. There are 2 forms: authen based on TOKEN (JWT) or request parameter based (eg username/password).\nModel using Lambda as authorizer Content Create REST API Check API with Postman "
 },
 {
 	"uri": "//localhost:1313/3-connect-rds/4-create-lambda-function/",
@@ -116,7 +116,7 @@
 	"title": "Configure Cognito",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": "Overview of AWS Cognito AWS Cognito is an identity management and user authentication service from Amazon Web Services (AWS). This service allows you to create secure web and mobile applications with user authentication, authorization, and login with multiple options such as user account, Social login or login via Identity Provider.\nCognito Features Register \u0026amp; Authenticate users using username/pw/email or social network account. Authorize users to applications or resources Verify email/phone number. Integrate with other services (API Gateway, Lambda) to build applications. Support for mobile applications (iOS, Android) through SDK Cognito sync: sync data between mobile devices Advanced Security: monitor \u0026amp; analyze user access to detect and prevent unusual access (optional). Cognito Pricing Cognito pricing is based on:\nNumber of Monthly Active Users. For example, in Singapore, it is $0.0055/MAU (the higher the cheaper) User sign in via SAML or OIDC: $0.015/MAU Advance Security feature: $0.05/MAU if enabled SMS in case of sending MFA messages: Depends on the region. Cognito\u0026rsquo;s limitations Number of Users per user pool: 40M (contact AWS if you want to increase) Maximum number of user pools: default 1,000, max 10,000 Custom attribute: 50 Limitations on Admin API call frequency, e.g.: UserCreation: 50 RPS. Increase by 10RPS for every 1 million MAUs AdminUserRead: 120 RPS. Increase 40 RPS for every 1 million MAU RevokeToken: 120 RPS. Increase 40 RPS for every 1 million MAU UserUpdate: 25 RPS cannot be increased. Note on Cognito\u0026rsquo;s token verification mechanism\nJWT tokens issued by Cognito will normally use client side verification (using the Public Key provided by Cognito. Note that AWS does not provide Cognito\u0026rsquo;s private key). This means that if the user logs out, the access-token is still valid until it expires (eg 30 minutes). If the system needs to revoke the issued access-token when the user has actions such as changing password, logging out, it cannot be done with Cognito. Of course, it is possible to workaround using Caching/DB techniques. Content Create user pool Create user \u0026amp; group cognito "
 },
 {
 	"uri": "//localhost:1313/3-connect-rds/5-connect-lambda-rds/",
@@ -130,7 +130,7 @@
 	"title": "Testing API with Cognito",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": "Check operation //Syntax\nhttps://\u0026lt;your user pool domain\u0026gt;/authorize?client_id=\u0026lt;your app client ID\u0026gt;\u0026amp;response_type=\u0026lt;code/token\u0026gt;\u0026amp;scope=\u0026lt;scopes to request\u0026gt;\u0026amp;redirect_uri=\u0026lt;your callback URL\u0026gt; Or the following syntax:\nhttps://\u0026lt;your app client ID\u0026gt;/authorize?client_id==\u0026lt;your app client ID\u0026gt;\u0026amp;response_type=token\u0026amp;scope=openid\u0026amp;redirect_uri=https://google.com Copy Cognito domain Copy Client ID Edit the syntax above to access cognito via the link. Use the username and password of the user created in cognito to log in. Enter information to change change password: Then you rollback to the url https://google.com with the token information. We copy to the editor to get the token 6. Learn about Token content Return to API Gateway\nGo to the API Gateway created in the API Gateway Deployment section Select Create an authorizer Set up information for cognito authentication Authorizer name: coginito-authorizer\nAuthorizer type : Cognito\nCognito user pool: test-lamda-pool-01 Create authorizer Return to resources Select the POST method. Current Authorization: NONE Select Edit Edit method information\nSelect the created Authorization: * *cognito-authorizer** Select Save Deploy to run the method with the authorizer just assigned to the method Now we copy Invoke URL Go to postman tool.\nClick on the + sign, to add a new tab\nSelect method POST Enter InvokURL of the POST API recorded from the previous step Enter RequestBody in raw form: { \u0026#34;method\u0026#34;: \u0026#34;GET\u0026#34;\r} Press the Send button Result: We get an authentication error (401 - Unauthorzierd) ![Request API](/images/6/15.png ?width=90pc)\nHighlight and copy id_token obtained from Step 6 Go to ** Postman**\nSelect Authorization Type: Bearer Token Paste the copied id_token into the token box on the right. Then Resend the request The result returns user information Add new user to database With Authorization: token pasted Result: New addition successful Check User table via EC2 connected to RDS Check the log in Cloud Watch ! Cloud Watch\n"
 },
 {
 	"uri": "//localhost:1313/7-clean-up/",

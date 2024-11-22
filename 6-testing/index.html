@@ -12,21 +12,21 @@
     <title>Testing API with Cognito :: Deploy ShareNote Application on Auto Scaling Group</title>
 
     
-    <link href="/css/nucleus.css?1732210829" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1732210829" rel="stylesheet">
-    <link href="/css/hybrid.css?1732210829" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1732210829" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1732210829" rel="stylesheet">
-    <link href="/css/auto-complete.css?1732210829" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1732210829" rel="stylesheet">
-    <link href="/css/theme.css?1732210829" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1732210829" rel="stylesheet">
+    <link href="/css/nucleus.css?1732257435" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1732257435" rel="stylesheet">
+    <link href="/css/hybrid.css?1732257435" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1732257435" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1732257435" rel="stylesheet">
+    <link href="/css/auto-complete.css?1732257435" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1732257435" rel="stylesheet">
+    <link href="/css/theme.css?1732257435" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1732257435" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1732210829" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1732257435" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1732210829"></script>
+    <script src="/js/jquery-3.3.1.min.js?1732257435"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1732210829"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1732210829"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1732257435"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1732257435"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1732210829"></script>
+<script type="text/javascript" src="/js/search.js?1732257435"></script>
 
     
   </div>
@@ -439,13 +439,13 @@
  
   
     
-    <li data-nav-id="/4-configure-apigateway/1-create-method-api/" title="Create method API" class="dd-item 
+    <li data-nav-id="/4-configure-apigateway/1-create-rest-api/" title="Create REST API" class="dd-item 
         
         
         
         ">
-      <a href="/4-configure-apigateway/1-create-method-api/">
-          <b>4.1 </b>Create method API
+      <a href="/4-configure-apigateway/1-create-rest-api/">
+          <b>4.1 </b>Create REST API
           
             <i class="fas fa-check read-icon"></i>
           
@@ -790,7 +790,15 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#check-operation">Check operation</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -814,7 +822,144 @@
 
 
 
-	
+	<h3 id="check-operation">Check operation</h3>
+<p><strong>//Syntax</strong></p>
+<pre tabindex="0"><code>https://&lt;your user pool domain&gt;/authorize?client_id=&lt;your app client ID&gt;&amp;response_type=&lt;code/token&gt;&amp;scope=&lt;scopes to request&gt;&amp;redirect_uri=&lt;your callback URL&gt;
+</code></pre><p><strong>Or the following syntax:</strong></p>
+<pre tabindex="0"><code>https://&lt;your app client ID&gt;/authorize?client_id==&lt;your app client ID&gt;&amp;response_type=token&amp;scope=openid&amp;redirect_uri=https://google.com
+</code></pre><ol>
+<li>
+<p>Copy <strong>Cognito domain</strong>
+<img alt="Copy Cognito domain" src="/images/6/1.png?width=90pc"></p>
+</li>
+<li>
+<p>Copy <strong>Client ID</strong>
+<img alt="Copy Client ID" src="/images/6/2.png?width=90pc"></p>
+</li>
+<li>
+<p>Edit the syntax above to access cognito via the link.
+Use the <strong>username and password</strong> of the user created in cognito to log in.
+<img alt="Access Cognito" src="/images/6/3.png?width=90pc"></p>
+</li>
+<li>
+<p>Enter information to change change password:
+<img alt="Go to Cognito" src="/images/6/4.png?width=90pc"></p>
+</li>
+</ol>
+<p>Then you rollback to the url <strong><a href="https://google.com">https://google.com</a> with the token information</strong>.
+<img alt="Access Cognito" src="/images/6/5.png?width=90pc"></p>
+<ol start="5">
+<li>
+<p>We copy to the editor to get the token
+<img alt="Copy token" src="/images/6/6.png?width=90pc"> 6. Learn about Token content
+<img alt="data token" src="/images/6/7.png?width=90pc"></p>
+</li>
+<li>
+<p>Return to API Gateway</p>
+</li>
+</ol>
+<ul>
+<li>Go to the API Gateway created in the <strong>API Gateway Deployment</strong> section</li>
+<li>Select <strong>Create an authorizer</strong>
+<img alt="Create an authorizer" src="/images/6/8.png?width=90pc"></li>
+</ul>
+<ol start="8">
+<li>Set up information for cognito authentication</li>
+</ol>
+<ul>
+<li>
+<p>Authorizer name: <code>coginito-authorizer</code></p>
+</li>
+<li>
+<p>Authorizer type : <strong>Cognito</strong></p>
+</li>
+<li>
+<p>Cognito user pool: <strong>test-lamda-pool-01</strong>
+<img alt="coginito-authorizer" src="/images/6/9.png?width=90pc"></p>
+</li>
+<li>
+<p><strong>Create authorizer</strong>
+<img alt="Create authorizer success" src="/images/6/10.png?width=90pc"></p>
+</li>
+</ul>
+<ol start="9">
+<li>
+<p>Return to resources
+Select the <strong>POST</strong> method. Current Authorization: <strong>NONE</strong>
+Select <strong>Edit</strong>
+<img alt="Choose Edit Method POST" src="/images/6/11.png?width=90pc"></p>
+</li>
+<li>
+<p>Edit method information</p>
+</li>
+</ol>
+<ul>
+<li>Select the created Authorization: * *cognito-authorizer**</li>
+<li>Select Save
+<img alt="Edit Method POST" src="/images/6/12.png?width=90pc"></li>
+</ul>
+<ol start="11">
+<li>
+<p><strong>Deploy</strong> to run the method with the authorizer just assigned to the method
+<img alt="Deploy API " src="/images/6/13.png?width=90pc"></p>
+</li>
+<li>
+<p>Now we copy <strong>Invoke URL</strong>
+<img alt="Copy Invoke URL" src="/images/6/14.png?width=90pc"></p>
+</li>
+<li>
+<p>Go to <strong>postman</strong> tool.</p>
+</li>
+</ol>
+<p>Click on the <strong>+</strong> sign, to add a new tab</p>
+<ul>
+<li>Select method <strong>POST</strong></li>
+<li>Enter <strong>InvokURL</strong> of the POST API recorded from the previous step</li>
+<li>Enter RequestBody in raw form:</li>
+</ul>
+<pre tabindex="0"><code>{ &#34;method&#34;: &#34;GET&#34;
+}
+</code></pre><ul>
+<li>Press the <strong>Send</strong> button</li>
+</ul>
+<p>Result: <strong>We get an authentication error (401 - Unauthorzierd)</strong>
+![Request API](/images/6/15.png ?width=90pc)</p>
+<ol start="14">
+<li>
+<p>Highlight and copy <strong>id_token</strong> obtained from <strong><em>Step 6</em></strong>
+<img alt="Request API" src="/images/6/16.png?width=90pc"></p>
+</li>
+<li>
+<p>Go to ** Postman**</p>
+</li>
+</ol>
+<ul>
+<li>Select <strong>Authorization</strong></li>
+<li>Type: <strong>Bearer Token</strong></li>
+<li><strong>Paste the copied id_token</strong> into the token box on the right. Then Resend the request</li>
+<li>The result returns user information
+<img alt="Request API" src="/images/6/17.png?width=90pc"></li>
+</ul>
+<ol start="16">
+<li><strong>Add new</strong> user to database</li>
+</ol>
+<ul>
+<li>With Authorization: token pasted</li>
+<li>Result: New addition successful
+<img alt="Create New User" src="/images/6/18.png?width=90pc"></li>
+</ul>
+<ol start="17">
+<li>
+<p>Check User table via EC2 connected to RDS
+<img alt="Check New User with EC2" src="/images/6/19.png?width=90pc"></p>
+</li>
+<li>
+<p>Check the log in <strong>Cloud Watch</strong>
+<img alt="Cloud Watch" src="/images/6/20.png?width=90pc"></p>
+</li>
+</ol>
+<p>! <a href="/images/6/21.png?width=90pc">Cloud Watch</a></p>
+
 
 
 
@@ -1190,19 +1335,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1732210829"></script>
-    <script src="/js/perfect-scrollbar.min.js?1732210829"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1732210829"></script>
-    <script src="/js/jquery.sticky.js?1732210829"></script>
-    <script src="/js/featherlight.min.js?1732210829"></script>
-    <script src="/js/highlight.pack.js?1732210829"></script>
+    <script src="/js/clipboard.min.js?1732257435"></script>
+    <script src="/js/perfect-scrollbar.min.js?1732257435"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1732257435"></script>
+    <script src="/js/jquery.sticky.js?1732257435"></script>
+    <script src="/js/featherlight.min.js?1732257435"></script>
+    <script src="/js/highlight.pack.js?1732257435"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1732210829"></script>
-    <script src="/js/learn.js?1732210829"></script>
-    <script src="/js/hugo-learn.js?1732210829"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1732257435"></script>
+    <script src="/js/learn.js?1732257435"></script>
+    <script src="/js/hugo-learn.js?1732257435"></script>
 
-    <link href="/mermaid/mermaid.css?1732210829" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1732210829"></script>
+    <link href="/mermaid/mermaid.css?1732257435" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1732257435"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

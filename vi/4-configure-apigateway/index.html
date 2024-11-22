@@ -12,21 +12,21 @@
     <title>Cấu hình API Gateway :: Triển khai Ứng dụng ShareNote với Auto Scaling Group</title>
 
     
-    <link href="/css/nucleus.css?1732210830" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1732210830" rel="stylesheet">
-    <link href="/css/hybrid.css?1732210830" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1732210830" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1732210830" rel="stylesheet">
-    <link href="/css/auto-complete.css?1732210830" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1732210830" rel="stylesheet">
-    <link href="/css/theme.css?1732210830" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1732210830" rel="stylesheet">
+    <link href="/css/nucleus.css?1732257436" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1732257436" rel="stylesheet">
+    <link href="/css/hybrid.css?1732257436" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1732257436" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1732257436" rel="stylesheet">
+    <link href="/css/auto-complete.css?1732257436" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1732257436" rel="stylesheet">
+    <link href="/css/theme.css?1732257436" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1732257436" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1732210830" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1732257436" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1732210830"></script>
+    <script src="/js/jquery-3.3.1.min.js?1732257436"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1732210830"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1732210830"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1732257436"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1732257436"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1732210830"></script>
+<script type="text/javascript" src="/js/search.js?1732257436"></script>
 
     
   </div>
@@ -439,13 +439,13 @@
  
   
     
-    <li data-nav-id="/vi/4-configure-apigateway/1-create-method-api/" title="Tạo phương thức API" class="dd-item 
+    <li data-nav-id="/vi/4-configure-apigateway/1-create-rest-api/" title="Triển khai API Gateway" class="dd-item 
         
         
         
         ">
-      <a href="/vi/4-configure-apigateway/1-create-method-api/">
-          <b>4.1 </b>Tạo phương thức API
+      <a href="/vi/4-configure-apigateway/1-create-rest-api/">
+          <b>4.1 </b>Triển khai API Gateway
           
             <i class="fas fa-check read-icon"></i>
           
@@ -790,7 +790,16 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#tổng-quan-về-api-gateway">Tổng quan về API Gateway</a></li>
+        <li><a href="#nội-dung">Nội dung</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -814,7 +823,73 @@
 
 
 
-	
+	<h3 id="tổng-quan-về-api-gateway">Tổng quan về API Gateway</h3>
+<p>Một dịch vụ <strong>API Gateway</strong> được cung cấp bởi AWS. Nó cung cấp một cách đơn giản để xây dựng, quản lý và bảo mật các <strong>RESTful API</strong> hoặc <strong>WebSocket</strong>. AWS API Gateway là một dịch vụ quan trọng trong kiến trúc dựa trên các dịch vụ của AWS (AWS-based microservices architecture) và thường được sử dụng cùng với các dịch vụ AWS khác như <strong><em>AWS Lambda, EC2, S3, Amazon DynamoDB</em></strong>.</p>
+<h4 id="aws-api-gateway-cung-cấp-các-tính-năng-gì-">AWS API Gateway cung cấp các tính năng gì ?</h4>
+<ul>
+<li>Cho phép thiết kế và phát triển API RESTful hoặc WebSocket thông qua web GUI.</li>
+<li>Điều phối các yêu cầu API đến các hệ thống hoặc dịch vụ khác nhau.</li>
+<li>Authen/Author request tới các API.</li>
+<li>Quản lý và giám sát các yêu cầu API, vd số lượng request, response time&hellip;• AWS API Gateway cũng cung cấp các tính năng bảo mật, bao gồm chứng thực và ủy quyền các yêu cầu API và mã hóa secure communication giữa các hệ thống khác nhau.</li>
+</ul>
+<h4 id="đặc-trưng-của-api-gateway">Đặc trưng của API Gateway</h4>
+<ul>
+<li>Là một fully managed service của AWS.</li>
+<li>Khả năng scale và High Availablity không giới hạn.</li>
+<li>Zero idle cost</li>
+<li>Easy to setup</li>
+<li>Dễ dàng kết hợp với các dịch vụ khác như CloudWatch, WAF cho mục đích monitor &amp; security.</li>
+</ul>
+<h4 id="khi-nào-nên-sử-dụng-api-gateway">Khi nào nên sử dụng API Gateway?</h4>
+<ul>
+<li>API Gateway phù hợp cho những bài toán sau
+<ul>
+<li>Kiến trúc Micro-service sử dụng lambda làm backend</li>
+<li>Backend API cho hầu hết các use case (web API, IoT)</li>
+<li>Gateway nhận data trực tiếp từ client sau đó lưu vào DynamoDB (DB First)</li>
+<li>Web Socket cho những hệ thống realtime communication.</li>
+</ul>
+</li>
+</ul>
+<h4 id="chi-phí-api-gateway-">Chi phí API Gateway ?</h4>
+<p>API Gateway PricingAPI Gateway là một dịch vụ có idle cost = 0. Người dùng chỉ trả tiền cho chi phí chạy thực tế,</p>
+<ul>
+<li><strong>Với REST API</strong>
+<ul>
+<li>Số lượng request (Vd Singapore region:$ 4.25/1M requests)</li>
+<li>Data transfer out ($/GB)</li>
+<li>Caching size tính theo GB/hour</li>
+</ul>
+</li>
+<li><strong>Với Web socket</strong>
+<ul>
+<li>Message number (đối với Web socket). Vd $1.15/1M message với block 32KB.</li>
+<li>Connection minutes: $0.288/1M connection minutes</li>
+</ul>
+</li>
+</ul>
+<h4 id="authentication-cho-api-gateway-">Authentication cho API Gateway ?</h4>
+<p>API Gateway cung cấp 2 phương thức authen tích hợp trực tiếp (authorizer) thường được sử dụng đó là:</p>
+<ul>
+<li>
+<p><strong>Cognito Authorizer</strong>
+Liên kết trực tiếp với một Cognito User Pool sử dụng làm authorizer. Khi access API, client passing trực tiếp token lấy được thông qua login với Cognito, API Gateway sẽ check token và allow access nếu token hợp lệ.</p>
+</li>
+<li>
+<p><strong>Lambda Authorizer</strong> (custom authorizer)
+Khi sử dụng loại authorizer này, bạn sẽ tự implement logic authen trên Lambda. Có 2 hình thức là authen dựa vào TOKEN (JWT) hoặc request parameter based (VD username/password).</p>
+</li>
+<li>
+<p><strong>Mô hình sử dụng Lambda làm authorizer</strong>
+<img alt="Lambda làm authorizer" src="/images/4/1.png?width=90pc"></p>
+</li>
+</ul>
+<h3 id="nội-dung">Nội dung</h3>
+<ol>
+<li><a href="/vi/4-configure-apigateway/1-create-rest-api/">Tạo REST API</a></li>
+<li><a href="/vi/4-configure-apigateway/2-check-api-with-postman/">Kiểm tra API với Postman</a></li>
+</ol>
+
 
 
 
@@ -1180,7 +1255,7 @@
 			<a class="nav nav-prev" href="/vi/3-connect-rds/5-connect-lambda-rds/" title="Kết nối Lambda với RDS Instance"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/vi/4-configure-apigateway/1-create-method-api/" title="Tạo phương thức API" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/vi/4-configure-apigateway/1-create-rest-api/" title="Triển khai API Gateway" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1190,19 +1265,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1732210830"></script>
-    <script src="/js/perfect-scrollbar.min.js?1732210830"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1732210830"></script>
-    <script src="/js/jquery.sticky.js?1732210830"></script>
-    <script src="/js/featherlight.min.js?1732210830"></script>
-    <script src="/js/highlight.pack.js?1732210830"></script>
+    <script src="/js/clipboard.min.js?1732257436"></script>
+    <script src="/js/perfect-scrollbar.min.js?1732257436"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1732257436"></script>
+    <script src="/js/jquery.sticky.js?1732257436"></script>
+    <script src="/js/featherlight.min.js?1732257436"></script>
+    <script src="/js/highlight.pack.js?1732257436"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1732210830"></script>
-    <script src="/js/learn.js?1732210830"></script>
-    <script src="/js/hugo-learn.js?1732210830"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1732257436"></script>
+    <script src="/js/learn.js?1732257436"></script>
+    <script src="/js/hugo-learn.js?1732257436"></script>
 
-    <link href="/mermaid/mermaid.css?1732210830" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1732210830"></script>
+    <link href="/mermaid/mermaid.css?1732257436" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1732257436"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

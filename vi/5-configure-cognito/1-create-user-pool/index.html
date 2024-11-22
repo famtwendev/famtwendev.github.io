@@ -12,21 +12,21 @@
     <title>Tạo User Pool :: Triển khai Ứng dụng ShareNote với Auto Scaling Group</title>
 
     
-    <link href="/css/nucleus.css?1732210830" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1732210830" rel="stylesheet">
-    <link href="/css/hybrid.css?1732210830" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1732210830" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1732210830" rel="stylesheet">
-    <link href="/css/auto-complete.css?1732210830" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1732210830" rel="stylesheet">
-    <link href="/css/theme.css?1732210830" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1732210830" rel="stylesheet">
+    <link href="/css/nucleus.css?1732257436" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1732257436" rel="stylesheet">
+    <link href="/css/hybrid.css?1732257436" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1732257436" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1732257436" rel="stylesheet">
+    <link href="/css/auto-complete.css?1732257436" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1732257436" rel="stylesheet">
+    <link href="/css/theme.css?1732257436" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1732257436" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1732210830" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1732257436" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1732210830"></script>
+    <script src="/js/jquery-3.3.1.min.js?1732257436"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1732210830"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1732210830"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1732257436"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1732257436"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1732210830"></script>
+<script type="text/javascript" src="/js/search.js?1732257436"></script>
 
     
   </div>
@@ -439,13 +439,13 @@
  
   
     
-    <li data-nav-id="/vi/4-configure-apigateway/1-create-method-api/" title="Tạo phương thức API" class="dd-item 
+    <li data-nav-id="/vi/4-configure-apigateway/1-create-rest-api/" title="Triển khai API Gateway" class="dd-item 
         
         
         
         ">
-      <a href="/vi/4-configure-apigateway/1-create-method-api/">
-          <b>4.1 </b>Tạo phương thức API
+      <a href="/vi/4-configure-apigateway/1-create-rest-api/">
+          <b>4.1 </b>Triển khai API Gateway
           
             <i class="fas fa-check read-icon"></i>
           
@@ -828,7 +828,97 @@
 
 
 
-	<h4 id="tạo-db-subnet-group">Tạo DB Subnet Group</h4>
+	<h4 id="tạo-user-pool">Tạo User pool</h4>
+<ol>
+<li>
+<p>Ở giao diện Console:
+Tìm kiếm từ khóa: <strong>Cognito</strong>
+<img alt="Search Cognito" src="/images/5/5_1/1.png?width=90pc"></p>
+</li>
+<li>
+<p>Chọn User pools ở phía menu phía bên trái
+Nhấn vào <strong>Create user pool</strong>
+<img alt="Click Create user pool" src="/images/5/5_1/2.png?width=90pc"></p>
+</li>
+<li>
+<p>Chọn User name, Email</p>
+</li>
+</ol>
+<ul>
+<li>Tích chọn <strong>Allow users to sign in with a preferred user name</strong></li>
+<li>Ấn <strong>Next</strong>
+<img alt="Chọn User name" src="/images/5/5_1/3.png?width=90pc"></li>
+</ul>
+<ol start="4">
+<li>
+<p>Chọn <strong>Cognito defaults</strong> cho mục Password policy
+<img alt="Chọn Cognito defaults" src="/images/5/5_1/4.png?width=90pc"></p>
+</li>
+<li>
+<p>Kéo xuống, chọn <strong>No MFA</strong> cho mục Multi-factor authentication</p>
+</li>
+</ol>
+<ul>
+<li>Chọn <strong>Email only</strong> cho mục Delivery method</li>
+<li>Ấn <strong>Next</strong>
+<img alt="Delivery methodChọn Cognito defaults" src="/images/5/5_1/5.png?width=90pc"></li>
+</ul>
+<ol start="6">
+<li>Để <strong><em>mặc định</em></strong> các tuỳ chọn</li>
+</ol>
+<ul>
+<li>Lướt xuống cùng, phần <strong>Additional required attributes</strong>: Chọn <strong>name</strong></li>
+<li>Chọn <strong>Next</strong>
+<img alt="Additional required attributes" src="/images/5/5_1/6.png?width=90pc"></li>
+</ul>
+<ol start="7">
+<li>Chọn <strong>Send email with Cognito</strong></li>
+</ol>
+<ul>
+<li>Ấn <strong>Next</strong>
+<img alt="Send email with Cognito" src="/images/5/5_1/7.png?width=90pc"></li>
+</ul>
+<ol start="8">
+<li>Tại phần cấu hình <strong>SMS</strong>:</li>
+</ol>
+<ul>
+<li>Chọn <strong>Create a new IAM role</strong></li>
+<li>IAM role name: <code>cognito-sms-role</code></li>
+<li>Chọn <strong>Next</strong>
+<img alt="Cấu hình sms" src="/images/5/5_1/8.png?width=90pc"></li>
+</ul>
+<ol start="9">
+<li>
+<p>Tạo <strong>User pool</strong></p>
+<ul>
+<li>Nhập tên cho user pool, ví dụ: <code>test-lamda-pool-01</code></li>
+<li>Tích chọn <strong>Use the Cognito Hosted UI</strong></li>
+<li>Domain: Chọn <strong>Use a Cognito domain</strong></li>
+<li>Nhập vào domain, ví dụ như: <strong>https://test-fcj-cloud</strong>
+<img alt="Tạo User pool" src="/images/5/5_1/9.png?width=90pc">
+<img alt="Tạo User pool" src="/images/5/5_1/10.png?width=90pc"></li>
+</ul>
+</li>
+<li>
+<p>Tạo <strong>App Client</strong></p>
+<ul>
+<li>Chọn <strong>Public client</strong></li>
+<li>Nhập tên cho app client, ví dụ: <code>test-change-data-rds</code>
+<img alt="Tạo App Client" src="/images/5/5_1/11.png?width=90pc"></li>
+</ul>
+</li>
+<li>
+<p>Tại phần mở rộng <strong>Advanced app client settings</strong></p>
+</li>
+</ol>
+<ul>
+<li>Chọn <strong>ALLOW_USER_PASSWORD_AUTH</strong></li>
+<li>Chọn <strong>ALLOW_USER_SRP_AUTHSRP</strong></li>
+<li>Chọn <strong>ALLOW_CUSTOM_AUTH</strong>
+<img alt="Advanced app client settings" src="/images/5/5_1/12.png?width=90pc">
+<img alt="Advanced app client settings" src="/images/5/5_1/13.png?width=90pc">
+Sau đó chọn <strong>Next</strong>, Chọn <strong>Create user pool</strong></li>
+</ul>
 
 
 
@@ -1206,19 +1296,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1732210830"></script>
-    <script src="/js/perfect-scrollbar.min.js?1732210830"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1732210830"></script>
-    <script src="/js/jquery.sticky.js?1732210830"></script>
-    <script src="/js/featherlight.min.js?1732210830"></script>
-    <script src="/js/highlight.pack.js?1732210830"></script>
+    <script src="/js/clipboard.min.js?1732257436"></script>
+    <script src="/js/perfect-scrollbar.min.js?1732257436"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1732257436"></script>
+    <script src="/js/jquery.sticky.js?1732257436"></script>
+    <script src="/js/featherlight.min.js?1732257436"></script>
+    <script src="/js/highlight.pack.js?1732257436"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1732210830"></script>
-    <script src="/js/learn.js?1732210830"></script>
-    <script src="/js/hugo-learn.js?1732210830"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1732257436"></script>
+    <script src="/js/learn.js?1732257436"></script>
+    <script src="/js/hugo-learn.js?1732257436"></script>
 
-    <link href="/mermaid/mermaid.css?1732210830" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1732210830"></script>
+    <link href="/mermaid/mermaid.css?1732257436" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1732257436"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -12,21 +12,21 @@
     <title>Configure API Gateway :: Deploy ShareNote Application on Auto Scaling Group</title>
 
     
-    <link href="/css/nucleus.css?1732210829" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1732210829" rel="stylesheet">
-    <link href="/css/hybrid.css?1732210829" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1732210829" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1732210829" rel="stylesheet">
-    <link href="/css/auto-complete.css?1732210829" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1732210829" rel="stylesheet">
-    <link href="/css/theme.css?1732210829" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1732210829" rel="stylesheet">
+    <link href="/css/nucleus.css?1732257435" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1732257435" rel="stylesheet">
+    <link href="/css/hybrid.css?1732257435" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1732257435" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1732257435" rel="stylesheet">
+    <link href="/css/auto-complete.css?1732257435" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1732257435" rel="stylesheet">
+    <link href="/css/theme.css?1732257435" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1732257435" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1732210829" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1732257435" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1732210829"></script>
+    <script src="/js/jquery-3.3.1.min.js?1732257435"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1732210829"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1732210829"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1732257435"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1732257435"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1732210829"></script>
+<script type="text/javascript" src="/js/search.js?1732257435"></script>
 
     
   </div>
@@ -439,13 +439,13 @@
  
   
     
-    <li data-nav-id="/4-configure-apigateway/1-create-method-api/" title="Create method API" class="dd-item 
+    <li data-nav-id="/4-configure-apigateway/1-create-rest-api/" title="Create REST API" class="dd-item 
         
         
         
         ">
-      <a href="/4-configure-apigateway/1-create-method-api/">
-          <b>4.1 </b>Create method API
+      <a href="/4-configure-apigateway/1-create-rest-api/">
+          <b>4.1 </b>Create REST API
           
             <i class="fas fa-check read-icon"></i>
           
@@ -790,7 +790,16 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#overview-api-gateway">Overview API Gateway</a></li>
+        <li><a href="#content">Content</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -814,7 +823,73 @@
 
 
 
-	
+	<h3 id="overview-api-gateway">Overview API Gateway</h3>
+<p>An <strong>API Gateway</strong> service provided by AWS. It provides a simple way to build, manage, and secure <strong>RESTful APIs</strong> or <strong>WebSockets</strong>. AWS API Gateway is an important service in the AWS-based microservices architecture and is often used in conjunction with other AWS services such as <strong><em>AWS Lambda, EC2, S3, Amazon DynamoDB</em></strong>.</p>
+<h4 id="what-features-does-aws-api-gateway-provide">What features does AWS API Gateway provide?</h4>
+<ul>
+<li>Allows designing and developing RESTful or WebSocket APIs through a web GUI.</li>
+<li>Coordinates API requests to different systems or services.</li>
+<li>Authen/Author requests to APIs.</li>
+<li>Manage and monitor API requests, such as number of requests, response time&hellip;• AWS API Gateway also provides security features, including authentication and authorization of API requests and encrypted secure communication between different systems.</li>
+</ul>
+<h4 id="features-of-api-gateway">Features of API Gateway</h4>
+<ul>
+<li>Is a fully managed service of AWS.</li>
+<li>Unlimited scalability and High Availablity.</li>
+<li>Zero idle cost</li>
+<li>Easy to setup</li>
+<li>Easy to combine with other services such as CloudWatch, WAF for monitoring &amp; security purposes.</li>
+</ul>
+<h4 id="when-to-use-api-gateway">When to use API Gateway?</h4>
+<ul>
+<li>API Gateway is suitable for the following problems
+<ul>
+<li>Micro-service architecture using lambda as backend</li>
+<li>Backend API for most use cases (web API, IoT)</li>
+<li>Gateway receives data directly from the client and then stores it in DynamoDB (DB First)</li>
+<li>Web Socket for realtime communication systems.</li>
+</ul>
+</li>
+</ul>
+<h4 id="cost-of-api-gateway-">Cost of API Gateway ?</h4>
+<p>API Gateway PricingAPI Gateway is a service with idle cost = 0. Users only pay for the actual running cost,</p>
+<ul>
+<li><strong>With REST API</strong>
+<ul>
+<li>Number of requests (eg Singapore region: $ 4.25/1M requests)</li>
+<li>Data transfer out ($/GB)</li>
+<li>Caching size in GB/hour</li>
+</ul>
+</li>
+<li><strong>With Web socket</strong>
+<ul>
+<li>Message number (for Web socket). Eg $1.15/1M message with 32KB block.</li>
+<li>Connection minutes: $0.288/1M connection minutes</li>
+</ul>
+</li>
+</ul>
+<h4 id="authentication-for-api-gateway-">Authentication for API Gateway ?</h4>
+<p>API Gateway provides 2 commonly used direct authentication methods (authorizers):</p>
+<ul>
+<li>
+<p><strong>Cognito Authorizer</strong>
+Directly linked to a Cognito User Pool used as an authorizer. When accessing the API, the client passes the token obtained directly through login with Cognito, API Gateway will check the token and allow access if the token is valid.</p>
+</li>
+<li>
+<p><strong>Lambda Authorizer</strong> (custom authorizer)
+When using this type of authorizer, you will implement the authen logic yourself on Lambda. There are 2 forms: authen based on TOKEN (JWT) or request parameter based (eg username/password).</p>
+</li>
+<li>
+<p><strong>Model using Lambda as authorizer</strong>
+<img alt="Lambda as authorizer" src="/images/4/1.png?width=90pc"></p>
+</li>
+</ul>
+<h3 id="content">Content</h3>
+<ol>
+<li><a href="/4-configure-apigateway/1-create-rest-api/">Create REST API</a></li>
+<li><a href="/4-configure-apigateway/2-check-api-with-postman/">Check API with Postman</a></li>
+</ol>
+
 
 
 
@@ -1180,7 +1255,7 @@
 			<a class="nav nav-prev" href="/3-connect-rds/5-connect-lambda-rds/" title="Connect RDS Instance with Lambda"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/4-configure-apigateway/1-create-method-api/" title="Create method API" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/4-configure-apigateway/1-create-rest-api/" title="Create REST API" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1190,19 +1265,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1732210829"></script>
-    <script src="/js/perfect-scrollbar.min.js?1732210829"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1732210829"></script>
-    <script src="/js/jquery.sticky.js?1732210829"></script>
-    <script src="/js/featherlight.min.js?1732210829"></script>
-    <script src="/js/highlight.pack.js?1732210829"></script>
+    <script src="/js/clipboard.min.js?1732257435"></script>
+    <script src="/js/perfect-scrollbar.min.js?1732257435"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1732257435"></script>
+    <script src="/js/jquery.sticky.js?1732257435"></script>
+    <script src="/js/featherlight.min.js?1732257435"></script>
+    <script src="/js/highlight.pack.js?1732257435"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1732210829"></script>
-    <script src="/js/learn.js?1732210829"></script>
-    <script src="/js/hugo-learn.js?1732210829"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1732257435"></script>
+    <script src="/js/learn.js?1732257435"></script>
+    <script src="/js/hugo-learn.js?1732257435"></script>
 
-    <link href="/mermaid/mermaid.css?1732210829" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1732210829"></script>
+    <link href="/mermaid/mermaid.css?1732257435" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1732257435"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

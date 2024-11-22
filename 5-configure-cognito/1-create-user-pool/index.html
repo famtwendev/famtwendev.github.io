@@ -12,21 +12,21 @@
     <title>Create User Pool :: Deploy ShareNote Application on Auto Scaling Group</title>
 
     
-    <link href="/css/nucleus.css?1732210829" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1732210829" rel="stylesheet">
-    <link href="/css/hybrid.css?1732210829" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1732210829" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1732210829" rel="stylesheet">
-    <link href="/css/auto-complete.css?1732210829" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1732210829" rel="stylesheet">
-    <link href="/css/theme.css?1732210829" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1732210829" rel="stylesheet">
+    <link href="/css/nucleus.css?1732257435" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1732257435" rel="stylesheet">
+    <link href="/css/hybrid.css?1732257435" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1732257435" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1732257435" rel="stylesheet">
+    <link href="/css/auto-complete.css?1732257435" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1732257435" rel="stylesheet">
+    <link href="/css/theme.css?1732257435" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1732257435" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1732210829" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1732257435" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1732210829"></script>
+    <script src="/js/jquery-3.3.1.min.js?1732257435"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1732210829"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1732210829"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1732257435"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1732257435"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1732210829"></script>
+<script type="text/javascript" src="/js/search.js?1732257435"></script>
 
     
   </div>
@@ -439,13 +439,13 @@
  
   
     
-    <li data-nav-id="/4-configure-apigateway/1-create-method-api/" title="Create method API" class="dd-item 
+    <li data-nav-id="/4-configure-apigateway/1-create-rest-api/" title="Create REST API" class="dd-item 
         
         
         
         ">
-      <a href="/4-configure-apigateway/1-create-method-api/">
-          <b>4.1 </b>Create method API
+      <a href="/4-configure-apigateway/1-create-rest-api/">
+          <b>4.1 </b>Create REST API
           
             <i class="fas fa-check read-icon"></i>
           
@@ -828,11 +828,96 @@
 
 
 
-	<h4 id="tạo-db-subnet-group">Tạo DB Subnet Group</h4>
+	<h4 id="create-user-pool">Create User pool</h4>
+<ol>
+<li>
+<p>In the Console interface:
+Search for keyword: <strong>Cognito</strong>
+<img alt="Search Cognito" src="/images/5/5_1/1.png?width=90pc"></p>
+</li>
+<li>
+<p>Select User pools on the left menu
+Click <strong>Create user pool</strong>
+<img alt="Click Create user pool" src="/images/5/5_1/2.png?width=90pc"></p>
+</li>
+<li>
+<p>Select User name, Email</p>
+</li>
+</ol>
 <ul>
-<li>Tìm kiếm từ khóa: RDS</li>
-<li>Chọn phần: Subnet groups</li>
-<li>Chọn: Create DB subnet group</li>
+<li>Check <strong>Allow users to sign in with a preferred user name</strong></li>
+<li>Click <strong>Next</strong>
+<img alt="Select User name" src="/images/5/5_1/3.png?width=90pc"></li>
+</ul>
+<ol start="4">
+<li>
+<p>Select <strong>Cognito defaults</strong> for Password policy
+<img alt="Select Cognito defaults" src="/images/5/5_1/4.png?width=90pc"></p>
+</li>
+<li>
+<p>Scroll down, select <strong>No MFA</strong> for Multi-factor authentication</p>
+</li>
+</ol>
+<ul>
+<li>Select <strong>Email only</strong> for Delivery method</li>
+<li>Click <strong>Next</strong>
+<img alt="Delivery methodChoose Cognito defaults" src="/images/5/5_1/5.png?width=90pc"></li>
+</ul>
+<ol start="6">
+<li>Leave <strong><em>default</em></strong> options</li>
+</ol>
+<ul>
+<li>Scroll down to the <strong>Additional required attributes</strong> section: Select <strong>name</strong></li>
+<li>Click <strong>Next</strong>
+<img alt="Additional required attributes" src="/images/5/5_1/6.png?width=90pc"></li>
+</ul>
+<ol start="7">
+<li>Select <strong>Send email with Cognito</strong></li>
+</ol>
+<ul>
+<li>Click <strong>Next</strong>
+<img alt="Send email with Cognito" src="/images/5/5_1/7.png?width=90pc"></li>
+</ul>
+<ol start="8">
+<li>In the <strong>SMS</strong> configuration section:</li>
+</ol>
+<ul>
+<li>Select <strong>Create a new IAM role</strong></li>
+<li>IAM role name: <code>cognito-sms-role</code></li>
+<li>Click <strong>Next</strong>
+<img alt="Configuration sms" src="/images/5/5_1/8.png?width=90pc"></li>
+</ul>
+<ol start="9">
+<li>
+<p>Create <strong>User pool</strong></p>
+<ul>
+<li>Enter a name for the user pool, for example: <code>test-lamda-pool-01</code></li>
+<li>Select <strong>Use the Cognito Hosted UI</strong></li>
+<li>Domain: Select <strong>Use a Cognito domain</strong></li>
+<li>Enter a domain, for example: <strong>https://test-fcj-cloud</strong>
+<img alt="Create User pool" src="/images/5/5_1/9.png?width=90pc">
+<img alt="Create User pool" src="/images/5/5_1/10.png?width=90pc"></li>
+</ul>
+</li>
+<li>
+<p>Create <strong>App Client</strong></p>
+<ul>
+<li>Select <strong>Public client</strong></li>
+<li>Enter a name for the app client, for example: <code>test-change-data-rds</code>
+<img alt="Create App Client" src="/images/5/5_1/11.png?width=90pc"></li>
+</ul>
+</li>
+<li>
+<p>At <strong>Advanced app client settings</strong></p>
+</li>
+</ol>
+<ul>
+<li>Select <strong>ALLOW_USER_PASSWORD_AUTH</strong></li>
+<li>Select <strong>ALLOW_USER_SRP_AUTHSRP</strong></li>
+<li>Select <strong>ALLOW_CUSTOM_AUTH</strong>
+<img alt="Advanced app client settings" src="/images/5/5_1/12.png?width=90pc">
+<img alt="Advanced app client settings" src="/images/5/5_1/13.png?width=90pc">
+Then select <strong>Next</strong>, Select <strong>Create user pool</strong></li>
 </ul>
 
 
@@ -1211,19 +1296,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1732210829"></script>
-    <script src="/js/perfect-scrollbar.min.js?1732210829"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1732210829"></script>
-    <script src="/js/jquery.sticky.js?1732210829"></script>
-    <script src="/js/featherlight.min.js?1732210829"></script>
-    <script src="/js/highlight.pack.js?1732210829"></script>
+    <script src="/js/clipboard.min.js?1732257435"></script>
+    <script src="/js/perfect-scrollbar.min.js?1732257435"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1732257435"></script>
+    <script src="/js/jquery.sticky.js?1732257435"></script>
+    <script src="/js/featherlight.min.js?1732257435"></script>
+    <script src="/js/highlight.pack.js?1732257435"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1732210829"></script>
-    <script src="/js/learn.js?1732210829"></script>
-    <script src="/js/hugo-learn.js?1732210829"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1732257435"></script>
+    <script src="/js/learn.js?1732257435"></script>
+    <script src="/js/hugo-learn.js?1732257435"></script>
 
-    <link href="/mermaid/mermaid.css?1732210829" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1732210829"></script>
+    <link href="/mermaid/mermaid.css?1732257435" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1732257435"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

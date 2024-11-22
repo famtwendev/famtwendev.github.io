@@ -12,21 +12,21 @@
     <title>Configure Cognito :: Deploy ShareNote Application on Auto Scaling Group</title>
 
     
-    <link href="/css/nucleus.css?1732210829" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1732210829" rel="stylesheet">
-    <link href="/css/hybrid.css?1732210829" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1732210829" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1732210829" rel="stylesheet">
-    <link href="/css/auto-complete.css?1732210829" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1732210829" rel="stylesheet">
-    <link href="/css/theme.css?1732210829" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1732210829" rel="stylesheet">
+    <link href="/css/nucleus.css?1732257435" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1732257435" rel="stylesheet">
+    <link href="/css/hybrid.css?1732257435" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1732257435" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1732257435" rel="stylesheet">
+    <link href="/css/auto-complete.css?1732257435" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1732257435" rel="stylesheet">
+    <link href="/css/theme.css?1732257435" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1732257435" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1732210829" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1732257435" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1732210829"></script>
+    <script src="/js/jquery-3.3.1.min.js?1732257435"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1732210829"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1732210829"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1732257435"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1732257435"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1732210829"></script>
+<script type="text/javascript" src="/js/search.js?1732257435"></script>
 
     
   </div>
@@ -439,13 +439,13 @@
  
   
     
-    <li data-nav-id="/4-configure-apigateway/1-create-method-api/" title="Create method API" class="dd-item 
+    <li data-nav-id="/4-configure-apigateway/1-create-rest-api/" title="Create REST API" class="dd-item 
         
         
         
         ">
-      <a href="/4-configure-apigateway/1-create-method-api/">
-          <b>4.1 </b>Create method API
+      <a href="/4-configure-apigateway/1-create-rest-api/">
+          <b>4.1 </b>Create REST API
           
             <i class="fas fa-check read-icon"></i>
           
@@ -790,7 +790,16 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#overview-of-aws-cognito">Overview of AWS Cognito</a></li>
+        <li><a href="#content">Content</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -814,7 +823,53 @@
 
 
 
-	
+	<h3 id="overview-of-aws-cognito">Overview of AWS Cognito</h3>
+<p><strong>AWS Cognito</strong> is an identity management and user authentication service from Amazon Web Services (AWS). This service allows you to create secure web and mobile applications with user authentication, authorization, and login with multiple options such as user account, Social login or login via Identity Provider.</p>
+<h4 id="cognito-features">Cognito Features</h4>
+<ul>
+<li>Register &amp; Authenticate users using username/pw/email or social network account.</li>
+<li>Authorize users to applications or resources</li>
+<li>Verify email/phone number.</li>
+<li>Integrate with other services (API Gateway, Lambda) to build applications.</li>
+<li>Support for mobile applications (iOS, Android) through SDK</li>
+<li>Cognito sync: sync data between mobile devices</li>
+<li>Advanced Security: monitor &amp; analyze user access to detect and prevent unusual access (optional).</li>
+</ul>
+<h4 id="cognito-pricing">Cognito Pricing</h4>
+<p><strong>Cognito</strong> pricing is based on:</p>
+<ul>
+<li>Number of Monthly Active Users. For example, in Singapore, it is $0.0055/MAU (the higher the cheaper)</li>
+<li>User sign in via SAML or OIDC: $0.015/MAU</li>
+<li>Advance Security feature: $0.05/MAU if enabled</li>
+<li>SMS in case of sending MFA messages: Depends on the region.</li>
+</ul>
+<h4 id="cognitos-limitations">Cognito&rsquo;s limitations</h4>
+<ul>
+<li>Number of Users per user pool: 40M (contact AWS if you want to increase)</li>
+<li>Maximum number of user pools: default 1,000, max 10,000</li>
+<li>Custom attribute: 50</li>
+<li><strong>Limitations on Admin API call frequency, e.g.:</strong>
+<ul>
+<li>UserCreation: 50 RPS. Increase by 10RPS for every 1 million MAUs</li>
+<li>AdminUserRead: 120 RPS. Increase 40 RPS for every 1 million MAU</li>
+<li>RevokeToken: 120 RPS. Increase 40 RPS for every 1 million MAU</li>
+<li>UserUpdate: 25 RPS cannot be increased.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Note on Cognito&rsquo;s token verification mechanism</strong></p>
+<ul>
+<li><strong>JWT tokens</strong> issued by Cognito will normally use client side verification (using the Public Key provided by Cognito. <strong><em>Note that AWS does not provide Cognito&rsquo;s private key)</em></strong>.</li>
+<li>This means that if the user logs out, the access-token is still valid until it expires
+(eg 30 minutes).</li>
+<li>If the system needs to revoke the issued access-token when the user has actions such as changing password, logging out, it cannot be done with Cognito. Of course, it is possible to workaround using Caching/DB techniques.</li>
+</ul>
+<h3 id="content">Content</h3>
+<ol>
+<li><a href="/5-configure-cognito/1-create-user-pool/">Create user pool</a></li>
+<li><a href="/5-configure-cognito/2-create-group-cognito/">Create user &amp; group cognito</a></li>
+</ol>
+
 
 
 
@@ -1190,19 +1245,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1732210829"></script>
-    <script src="/js/perfect-scrollbar.min.js?1732210829"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1732210829"></script>
-    <script src="/js/jquery.sticky.js?1732210829"></script>
-    <script src="/js/featherlight.min.js?1732210829"></script>
-    <script src="/js/highlight.pack.js?1732210829"></script>
+    <script src="/js/clipboard.min.js?1732257435"></script>
+    <script src="/js/perfect-scrollbar.min.js?1732257435"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1732257435"></script>
+    <script src="/js/jquery.sticky.js?1732257435"></script>
+    <script src="/js/featherlight.min.js?1732257435"></script>
+    <script src="/js/highlight.pack.js?1732257435"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1732210829"></script>
-    <script src="/js/learn.js?1732210829"></script>
-    <script src="/js/hugo-learn.js?1732210829"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1732257435"></script>
+    <script src="/js/learn.js?1732257435"></script>
+    <script src="/js/hugo-learn.js?1732257435"></script>
 
-    <link href="/mermaid/mermaid.css?1732210829" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1732210829"></script>
+    <link href="/mermaid/mermaid.css?1732257435" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1732257435"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

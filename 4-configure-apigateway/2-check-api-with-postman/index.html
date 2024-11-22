@@ -12,21 +12,21 @@
     <title>Check API with Postman :: Deploy ShareNote Application on Auto Scaling Group</title>
 
     
-    <link href="/css/nucleus.css?1732210829" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1732210829" rel="stylesheet">
-    <link href="/css/hybrid.css?1732210829" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1732210829" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1732210829" rel="stylesheet">
-    <link href="/css/auto-complete.css?1732210829" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1732210829" rel="stylesheet">
-    <link href="/css/theme.css?1732210829" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1732210829" rel="stylesheet">
+    <link href="/css/nucleus.css?1732257435" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1732257435" rel="stylesheet">
+    <link href="/css/hybrid.css?1732257435" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1732257435" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1732257435" rel="stylesheet">
+    <link href="/css/auto-complete.css?1732257435" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1732257435" rel="stylesheet">
+    <link href="/css/theme.css?1732257435" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1732257435" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1732210829" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1732257435" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1732210829"></script>
+    <script src="/js/jquery-3.3.1.min.js?1732257435"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1732210829"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1732210829"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1732257435"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1732257435"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1732210829"></script>
+<script type="text/javascript" src="/js/search.js?1732257435"></script>
 
     
   </div>
@@ -439,13 +439,13 @@
  
   
     
-    <li data-nav-id="/4-configure-apigateway/1-create-method-api/" title="Create method API" class="dd-item 
+    <li data-nav-id="/4-configure-apigateway/1-create-rest-api/" title="Create REST API" class="dd-item 
         
         
         
         ">
-      <a href="/4-configure-apigateway/1-create-method-api/">
-          <b>4.1 </b>Create method API
+      <a href="/4-configure-apigateway/1-create-rest-api/">
+          <b>4.1 </b>Create REST API
           
             <i class="fas fa-check read-icon"></i>
           
@@ -828,7 +828,24 @@
 
 
 
-	<h4 id="tạo-cơ-sở-dữ-liệu">Tạo cơ sở dữ liệu</h4>
+	<p><strong>Postman</strong> is currently one of the most popular tools used in testing APIs.</p>
+<p>As we know, API is responsible for connecting applications together, having Postman will make working with this API easier. Normally, Postman will be used for REST API. With Postman, we can call Rest API without writing any code.</p>
+<p>Download <a href="https://www.postman.com/downloads/">Postman</a>.</p>
+<h4 id="test-api-with-postman">Test API with Postman</h4>
+<p>Click on the <strong>+</strong> ,sign to add a new tab</p>
+<ul>
+<li>Select POST method</li>
+<li>Enter <strong>InvokURL</strong> of the POST API recorded from the previous step</li>
+<li>Enter <strong>RequestBody</strong> in <strong>raw</strong> format:</li>
+</ul>
+<pre tabindex="0"><code>{
+&#34;method&#34;: &#34;GET&#34;
+}
+</code></pre><ul>
+<li>Press <strong>Send</strong> button</li>
+</ul>
+<p>The returned result is all the processed data of the User table</p>
+<p><img alt="Test API" src="/images/4/4_2/1.png?width=90pc"></p>
 
 
 
@@ -1196,7 +1213,7 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/4-configure-apigateway/1-create-method-api/" title="Create method API"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/4-configure-apigateway/1-create-rest-api/" title="Create REST API"> <i class="fa fa-chevron-left"></i></a>
 		
 		
 			<a class="nav nav-next" href="/5-configure-cognito/" title="Configure Cognito" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
@@ -1209,19 +1226,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1732210829"></script>
-    <script src="/js/perfect-scrollbar.min.js?1732210829"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1732210829"></script>
-    <script src="/js/jquery.sticky.js?1732210829"></script>
-    <script src="/js/featherlight.min.js?1732210829"></script>
-    <script src="/js/highlight.pack.js?1732210829"></script>
+    <script src="/js/clipboard.min.js?1732257435"></script>
+    <script src="/js/perfect-scrollbar.min.js?1732257435"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1732257435"></script>
+    <script src="/js/jquery.sticky.js?1732257435"></script>
+    <script src="/js/featherlight.min.js?1732257435"></script>
+    <script src="/js/highlight.pack.js?1732257435"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1732210829"></script>
-    <script src="/js/learn.js?1732210829"></script>
-    <script src="/js/hugo-learn.js?1732210829"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1732257435"></script>
+    <script src="/js/learn.js?1732257435"></script>
+    <script src="/js/hugo-learn.js?1732257435"></script>
 
-    <link href="/mermaid/mermaid.css?1732210829" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1732210829"></script>
+    <link href="/mermaid/mermaid.css?1732257435" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1732257435"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
